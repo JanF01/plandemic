@@ -1,0 +1,12 @@
+$dark: linear-gradient(to top right, #000510, #000206);
+$vdark: #000206;
+$dorange: #bb3e03;
+$orange: #ca6702;
+$lightorange: #ee9b00;
+
+@mixin borderRadius($b) {
+  border-radius: $b;
+  -ms-border-radius: $b;
+  -moz-border-radius: $b;
+  -webkit-border-radius: $b;
+}

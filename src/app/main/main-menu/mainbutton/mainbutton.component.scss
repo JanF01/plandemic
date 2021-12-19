@@ -1,0 +1,34 @@
+@import "../../../../assets/variables";
+button {
+  margin-top: 1em;
+  color: white;
+  background: none;
+  border: none;
+  background-color: $orange;
+  padding: 0.8em 1.8em;
+
+  font-family: "Raleway", "Courier New", Courier, monospace;
+  font-size: 1.1em;
+  @include borderRadius(0.25em);
+  border-bottom: 0.24em solid $dorange;
+  position: relative;
+  transition: all 0.13s;
+  z-index: 11;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $dorange;
+  }
+}
+.second {
+  background-color: transparent;
+  border-top: 0.12em solid rgb(153, 153, 153);
+  border-left: 0.13em solid rgb(180, 180, 180);
+  border-right: 0.13em solid rgb(180, 180, 180);
+  border-bottom: 0.17em solid white;
+  margin-left: 2em;
+  &:hover {
+    background-color: rgba(39, 34, 18, 0.829);
+    cursor: pointer;
+  }
+}
