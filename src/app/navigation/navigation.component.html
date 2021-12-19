@@ -1,8 +1,21 @@
 <nav>
-  <div class="logo"><img src="assets/logo.png" />PLANDEMIC</div>
+  <div class="logo" (click)="switchToMain()">
+    <img src="assets/sticky_note.png" [hidden]="mode != 1" />
+    <img src="assets/sticky_note_blue.png" [hidden]="mode != 2" />
+    <img src="assets/sticky_note_red.png" [hidden]="mode != 3" />PLANDEMIC
+  </div>
   <ul>
-    <li>Sign in</li>
-    <li>Blog</li>
-    <li>Contact</li>
+    <li
+      [ngClass]="{ blueColoring: mode == 2, redColoring: mode == 3 }"
+      (click)="switchSignIn()"
+    >
+      Sign in
+    </li>
+    <li [ngClass]="{ blueColoring: mode == 2, redColoring: mode == 3 }">
+      Blog
+    </li>
+    <li [ngClass]="{ blueColoring: mode == 2, redColoring: mode == 3 }">
+      Contact
+    </li>
   </ul>
 </nav>

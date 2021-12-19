@@ -7,6 +7,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { MainComponent } from './main/main.component';
 import { MainMenuComponent } from './main/main-menu/main-menu.component';
 import { MainbuttonComponent } from './main/main-menu/mainbutton/mainbutton.component';
+import { SignupComponent } from './main/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { MainbuttonComponent } from './main/main-menu/mainbutton/mainbutton.comp
     MainComponent,
     MainMenuComponent,
     MainbuttonComponent,
+    SignupComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

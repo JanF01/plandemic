@@ -7,4 +7,21 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'plandemic';
+  mode: number;
+
+  constructor() {
+    this.mode = 1;
+  }
+
+  changeMode(value: any) {
+    this.mode = value;
+  }
+
+  switchMode(value: any) {
+    if (value == 'main') {
+      this.mode = 1;
+    } else if (value == 'signIn') {
+      this.mode = 3;
+    }
+  }
 }

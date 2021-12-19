@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-mainbutton',
@@ -7,8 +7,13 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class MainbuttonComponent implements OnInit {
   @Input() content!: string;
+  @Output() notifyClicked: EventEmitter<any> = new EventEmitter();
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  notifyParent() {
+    if (this.content == 'Create Account') this.notifyClicked.emit('clicked');
+  }
 }

@@ -1,9 +1,29 @@
 <main>
-  <app-main-menu> </app-main-menu>
-  <aside>Graphical design here.</aside>
+  <app-main-menu
+    [ngClass]="{ hide: mode != 1 }"
+    (switchSignUp)="signUp($event)"
+  >
+  </app-main-menu>
+  <app-signup [ngClass]="{ hide: mode != 2 && mode != 3 }" [mode]="mode">
+  </app-signup>
+  <aside>
+    <img src="assets/notesphone.png" [hidden]="mode != 1" /><img
+      src="assets/desktoplook.png"
+      [hidden]="mode != 1"
+    />
+  </aside>
   <div class="design">
-    <div class="dec1"></div>
-    <div class="dec2"></div>
-    <div class="dec3"></div>
+    <div
+      class="dec1"
+      [ngClass]="{ blueColoring: mode == 2, redColoring: mode == 3 }"
+    ></div>
+    <div
+      class="dec2"
+      [ngClass]="{ blueColoring: mode == 2, redColoring: mode == 3 }"
+    ></div>
+    <div
+      class="dec3"
+      [ngClass]="{ blueColoring: mode == 2, redColoring: mode == 3 }"
+    ></div>
   </div>
 </main>

@@ -1,3 +1,10 @@
-<button [ngClass]="{ second: content == 'Check Out The Possibilities' }">
+<button
+  [ngClass]="{
+    second: content == 'Check Out The Possibilities',
+    blue: content == 'Sign up',
+    red: content == 'Sign in'
+  }"
+  (click)="notifyParent()"
+>
   {{ content }}
 </button>

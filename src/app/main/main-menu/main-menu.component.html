@@ -5,7 +5,10 @@
     Organize your day.
   </p>
   <footer>
-    <app-mainbutton content="Create Account"></app-mainbutton>
+    <app-mainbutton
+      content="Create Account"
+      (notifyClicked)="emitSignUp($event)"
+    ></app-mainbutton>
     <app-mainbutton content="Check Out The Possibilities"></app-mainbutton>
   </footer>
 </main>

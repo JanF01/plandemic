@@ -19,6 +19,13 @@ nav {
     align-items: center;
     justify-content: center;
     height: 100%;
+    cursor: pointer;
+    img {
+      width: 25px;
+      margin-right: 0.8em;
+      margin-left: -0.5em;
+      margin-top: -0.15em;
+    }
   }
   ul {
     flex: 1;
@@ -37,8 +44,20 @@ nav {
 
       transition: all 0.2s;
       &:hover {
-        background-color: #ca670274;
+        background-color: #ca6702c4;
         cursor: pointer;
+      }
+      &.blueColoring {
+        &:hover {
+          background-color: rgba(10, 117, 150, 198);
+          cursor: pointer;
+        }
+      }
+      &.redColoring {
+        &:hover {
+          background-color: rgba(155, 34, 38, 198);
+          cursor: pointer;
+        }
       }
     }
   }

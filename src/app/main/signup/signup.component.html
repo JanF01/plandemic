@@ -1,0 +1,68 @@
+<div class="column" [hidden]="mode == 3">
+  <h2>SIGN UP</h2>
+  <span>
+    <input
+      class="over"
+      type="text"
+      placeholder="E-mail"
+      id="email"
+      autocomplete="off"
+    />
+    <label for="state">Email</label>
+  </span>
+  <span>
+    <input
+      class="over"
+      type="text"
+      placeholder="Login"
+      id="login"
+      autocomplete="off"
+    />
+    <label for="state">Login</label>
+  </span>
+  <span>
+    <input
+      class="over"
+      type="password"
+      placeholder="Password"
+      id="pass"
+      autocomplete="off"
+    />
+    <label for="state">Password</label>
+  </span>
+  <span>
+    <input
+      class="over"
+      type="password"
+      placeholder="Repeat Password"
+      id="passr"
+      autocomplete="off"
+    />
+    <label for="state">Repeat Password</label>
+  </span>
+</div>
+<div class="column" [hidden]="mode == 2">
+  <h2>SIGN IN</h2>
+  <span>
+    <input
+      class="over red"
+      type="text "
+      placeholder="Login"
+      id="email"
+      autocomplete="off"
+    />
+    <label for="state" class="red">Login</label>
+  </span>
+  <span>
+    <input
+      class="over red"
+      type="password"
+      placeholder="Password"
+      id="login"
+      autocomplete="off"
+    />
+    <label for="state" class="red">Password</label>
+  </span>
+</div>
+<app-mainbutton content="Sign up" [hidden]="mode == 3"></app-mainbutton>
+<app-mainbutton content="Sign in" [hidden]="mode == 2"></app-mainbutton>
