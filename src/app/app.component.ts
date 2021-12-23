@@ -10,7 +10,7 @@ export class AppComponent {
   mode: number;
 
   constructor() {
-    this.mode = 1;
+    this.mode = 2;
   }
 
   changeMode(value: any) {

@@ -3,10 +3,16 @@
   <span>
     <input
       class="over"
+      [ngClass]="{
+        incorrect_email: !correctEmail && emailValue,
+        correct_email: correctEmail && emailValue
+      }"
+      (input)="emailValidator()"
       type="text"
       placeholder="E-mail"
       id="email"
       autocomplete="off"
+      [(ngModel)]="emailValue"
     />
     <label for="state">Email</label>
   </span>
@@ -48,7 +54,7 @@
       class="over red"
       type="text "
       placeholder="Login"
-      id="email"
+      id="emaill"
       autocomplete="off"
     />
     <label for="state" class="red">Login</label>
@@ -58,7 +64,7 @@
       class="over red"
       type="password"
       placeholder="Password"
-      id="login"
+      id="loginn"
       autocomplete="off"
     />
     <label for="state" class="red">Password</label>

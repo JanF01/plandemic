@@ -8,6 +8,7 @@ import { MainComponent } from './main/main.component';
 import { MainMenuComponent } from './main/main-menu/main-menu.component';
 import { MainbuttonComponent } from './main/main-menu/mainbutton/mainbutton.component';
 import { SignupComponent } from './main/signup/signup.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { SignupComponent } from './main/signup/signup.component';
     MainbuttonComponent,
     SignupComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

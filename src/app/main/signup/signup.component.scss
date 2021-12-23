@@ -101,6 +101,19 @@
 app-mainbutton {
   margin-left: 2.3%;
 }
+
+input.incorrect_email {
+  border-bottom: rgb(195, 34, 38) 0.3em solid !important;
+  + label {
+    bottom: 12px !important;
+  }
+}
+input.correct_email {
+  border-bottom: rgb(93, 195, 34) 0.3em solid !important;
+  + label {
+    bottom: 12px !important;
+  }
+}
 [hidden] {
   display: none !important;
 }
