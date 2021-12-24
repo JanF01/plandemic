@@ -5,17 +5,17 @@ const db = require("../database/db.js");
 const Client = db.sequelize.define(
   "client",
   {
-    id: {
+    pd_id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
     },
-    login: {
+    pd_l: {
       type: Sequelize.TEXT("tiny"),
     },
-    password: {
+    pd_h: {
       type: Sequelize.TEXT,
     },
-    email: {
+    pd_e: {
       type: Sequelize.TEXT,
     },
   },

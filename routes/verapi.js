@@ -48,19 +48,19 @@ verapi.post("/plandemic_reg", (req, res) => {
 
   Client.findOne({
     where: {
-      login: playerData.login,
+      pd_l: clientData.login,
     },
   })
-    .then((player) => {
-      if (!player || player == null) {
+    .then((client) => {
+      if (!client || client == null) {
         let hash = bcrypt.hashSync(clientData.password, 10);
-        playerData.password = hash;
-        player
+        clientData.password = hash;
+        client
           .create(clientData)
-          .then((player) => {
-            player.dataValues.id = player.null;
+          .then((client) => {
+            client.dataValues.id = client.null;
             let token = jwt.sign(
-              objectWithoutKey(player.dataValues, "password"),
+              objectWithoutKey(client.dataValues, "pd_h"),
               process.env.SECRET_KEY,
               {
                 expiresIn: 7200,
@@ -90,16 +90,16 @@ verapi.post("/plandemic_log", (req, res) => {
 
   Client.findOne({
     where: {
-      login: clientData.login,
+      pd_l: clientData.login,
     },
   })
     .then((client) => {
-      if (player) {
-        let pass = bcrypt.compareSync(clientData.password, client.password);
+      if (client) {
+        let pass = bcrypt.compareSync(clientData.password, client.pd_h);
 
         if (pass) {
           let token = jwt.sign(
-            objectWithoutKey(client.dataValues, "password"),
+            objectWithoutKey(client.dataValues, "pd_h"),
             process.env.SECRET_KEY,
             {
               expiresIn: 7200,
