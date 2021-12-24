@@ -15,6 +15,9 @@
       [(ngModel)]="emailValue"
     />
     <label for="state" class="lab1">Email</label>
+    <label for="state" class="alert" [hidden]="!this.alerts.email">{{
+      this.alerts.emailValue
+    }}</label>
   </span>
   <span>
     <input
@@ -26,10 +29,13 @@
       [(ngModel)]="loginValue"
     />
     <label for="state" class="lab1">Login</label>
+    <label for="state" class="alert" [hidden]="!this.alerts.login">{{
+      this.alerts.loginValue
+    }}</label>
   </span>
   <span>
     <input
-      class="over"
+      class="over pn"
       type="password"
       placeholder="Password"
       id="pass"
@@ -37,10 +43,13 @@
       [(ngModel)]="passValue"
     />
     <label for="state" class="lab1">Password</label>
+    <label for="state" class="alert" [hidden]="!this.alerts.pass">{{
+      this.alerts.passValue
+    }}</label>
   </span>
   <span>
     <input
-      class="over"
+      class="over pr"
       type="password"
       placeholder="Repeat Password"
       id="passr"
@@ -48,6 +57,9 @@
       [(ngModel)]="passRepeatValue"
     />
     <label for="state" class="lab1"> Repeat Password</label>
+    <label for="state" class="alert" [hidden]="!this.alerts.passRepeat">{{
+      this.alerts.passRepeatValue
+    }}</label>
   </span>
 </div>
 <div class="column" [hidden]="mode == 2">
@@ -68,7 +80,7 @@
   </span>
   <span>
     <input
-      class="over red"
+      class="over red pn"
       type="password"
       placeholder="Password"
       id="loginn"
@@ -81,7 +93,11 @@
     }}</label>
   </span>
 </div>
-<app-mainbutton content="Sign up" [hidden]="mode == 3"></app-mainbutton>
+<app-mainbutton
+  content="Sign up"
+  [hidden]="mode == 3"
+  (click)="register()"
+></app-mainbutton>
 <app-mainbutton
   content="Sign in"
   [hidden]="mode == 2"

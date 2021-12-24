@@ -18,6 +18,7 @@ export class SignupComponent implements OnInit {
   signInLogin: string;
   signInPass: string;
   correctEmail: boolean;
+  passed: boolean;
 
   alerts: any = {
     siLogin: false,
@@ -43,6 +44,7 @@ export class SignupComponent implements OnInit {
     this.signInLogin = '';
     this.signInPass = '';
     this.correctEmail = false;
+    this.passed = false;
   }
 
   ngOnInit(): void {}
@@ -59,13 +61,35 @@ export class SignupComponent implements OnInit {
       return true;
     } else {
       this.correctEmail = false;
-      this.alerts.email = true;
-      this.alerts.emailValue = 'Invalid Email';
+      return false;
+    }
+  }
+
+  verifyPassword(): boolean {
+    if (this.passValue.length < 7) {
+      this.alerts.pass = true;
+      this.alerts.passValue = 'Minimum 7 characters';
+      return false;
+    }
+    if (this.passValue == this.passRepeatValue) {
+      return true;
+    } else {
+      this.alerts.passRepeat = true;
+      this.alerts.passRepeatValue = "Passwords don't match";
       return false;
     }
   }
 
   loginValidator(): boolean {
+    if (this.login.length <= 2) {
+      this.alerts.login = true;
+      this.alerts.loginValue = 'Minimum 2 characters';
+      return false;
+    }
+    return true;
+  }
+
+  loginSiValidator(): boolean {
     if (this.signInLogin.length <= 2) {
       this.alerts.siLogin = true;
       this.alerts.siLoginValue = 'Minimum 2 characters';
@@ -75,7 +99,7 @@ export class SignupComponent implements OnInit {
   }
 
   login(): boolean {
-    if (!this.loginValidator()) {
+    if (!this.loginSiValidator()) {
       return false;
     }
     this.verify.login(this.signInLogin, this.signInPass).subscribe((resp) => {
@@ -90,6 +114,37 @@ export class SignupComponent implements OnInit {
         location.reload();
       }
     });
+
+    return false;
+  }
+
+  register(): boolean {
+    this.passed = this.loginValidator() && this.emailValidator();
+
+    if (!this.verifyPassword()) {
+      this.passed = false;
+    }
+
+    if (!this.emailValidator()) {
+      this.alerts.email = true;
+      this.alerts.emailValue = 'Invalid e-mail';
+    }
+
+    if (this.passed)
+      this.verify
+        .register(this.loginValue, this.passValue, this.emailValue)
+        .subscribe((resp) => {
+          if (resp.error) {
+            this.alerts.pass = true;
+            this.alerts.passValue = resp.error;
+          } else if (resp == 'lt') {
+            this.alerts.login = true;
+            this.alerts.loginValue = 'Login already used';
+          } else {
+            this.router.navigateByUrl('/');
+            location.reload();
+          }
+        });
 
     return false;
   }

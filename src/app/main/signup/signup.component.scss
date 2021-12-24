@@ -29,6 +29,12 @@
       border-radius: 3px;
       outline: 0;
       text-indent: 60px; // Arbitrary.
+      &.pn {
+        text-indent: 100px;
+      }
+      &.pr {
+        text-indent: 160px;
+      }
       transition: all 0.3s ease-in-out;
       &::-webkit-input-placeholder {
         color: #efefef;
@@ -79,7 +85,7 @@
         transform: translateY(-40px);
 
         &:after {
-          border-top: 4px solid rgba(10, 117, 150, 1);
+          border-top: 4px solid rgb(16, 134, 170);
         }
         &.red {
           text-shadow: 0 1px 0 rgba(155, 34, 38, 0.4) !important;
@@ -127,15 +133,15 @@ app-mainbutton {
 
 input.incorrect_email {
   border-bottom: rgb(195, 34, 38) 0.3em solid !important;
-  + .lab1,
-  + .alert {
+  ~ .lab1,
+  ~ .alert {
     bottom: 12px !important;
   }
 }
 input.correct_email {
   border-bottom: rgb(93, 195, 34) 0.3em solid !important;
-  + .lab1,
-  + .alert {
+  ~ .lab1,
+  ~ .alert {
     bottom: 12px !important;
   }
 }
