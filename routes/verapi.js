@@ -74,11 +74,11 @@ verapi.post("/plandemic_reg", (req, res) => {
             res.send("error: " + error);
           });
       } else {
-        res.send("lt");
+        res.json("lt");
       }
     })
     .catch((error) => {
-      res.send("error: " + error);
+      res.json("error: " + error);
     });
 });
 
@@ -109,14 +109,14 @@ verapi.post("/plandemic_log", (req, res) => {
             token: token,
           });
         } else {
-          res.send("wp");
+          res.json("wp");
         }
       } else {
-        res.send("ude");
+        res.json("ude");
       }
     })
     .catch((err) => {
-      res.send("error: " + err);
+      res.json("error: " + err);
     });
 });
 
