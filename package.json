@@ -1,0 +1,31 @@
+{
+  "name": "plandemicserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JanF01/plandemic.git"
+  },
+  "author": "Jan Fiołka",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JanF01/plandemic/issues"
+  },
+  "homepage": "https://github.com/JanF01/plandemic#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "fs": "^0.0.1-security",
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.3.3",
+    "q": "^1.5.1",
+    "sequelize": "^7.0.0-alpha.2"
+  }
+}
