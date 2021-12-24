@@ -13,7 +13,6 @@ export class MainMenuComponent implements OnInit {
   ngOnInit(): void {}
 
   emitSignUp(value: Event) {
-    console.log('omg');
     this.switchSignUp.emit('value');
   }
 }

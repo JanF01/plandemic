@@ -35,7 +35,8 @@
         text-indent: 0;
       }
 
-      + label {
+      ~ .lab1,
+      ~ .alert {
         z-index: 13;
         display: inline-block;
         position: absolute;
@@ -68,7 +69,28 @@
           transition: all 0.3s ease-in-out;
         }
       }
+      ~ .alert {
+        text-transform: none;
+        left: auto;
+        right: 0 !important;
+        color: #fff;
+        text-shadow: 0 1px 0 rgba(19, 74, 70, 0.4);
+        background: rgba(10, 117, 150, 1);
+        transform: translateY(-40px);
+
+        &:after {
+          border-top: 4px solid rgba(10, 117, 150, 1);
+        }
+        &.red {
+          text-shadow: 0 1px 0 rgba(155, 34, 38, 0.4) !important;
+          background: rgb(199, 52, 57) !important;
+          &:after {
+            border-top: 4px solid rgba(155, 34, 38, 1) !important;
+          }
+        }
+      }
     }
+
     .over:focus,
     .over:active {
       color: #0b2e26;
@@ -78,7 +100,8 @@
       &::-webkit-input-placeholder {
         color: #aaa;
       }
-      + label {
+
+      ~ .lab1 {
         color: #fff;
         text-shadow: 0 1px 0 rgba(19, 74, 70, 0.4);
         background: rgba(10, 117, 150, 1);
@@ -104,13 +127,15 @@ app-mainbutton {
 
 input.incorrect_email {
   border-bottom: rgb(195, 34, 38) 0.3em solid !important;
-  + label {
+  + .lab1,
+  + .alert {
     bottom: 12px !important;
   }
 }
 input.correct_email {
   border-bottom: rgb(93, 195, 34) 0.3em solid !important;
-  + label {
+  + .lab1,
+  + .alert {
     bottom: 12px !important;
   }
 }

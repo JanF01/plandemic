@@ -14,7 +14,7 @@
       autocomplete="off"
       [(ngModel)]="emailValue"
     />
-    <label for="state">Email</label>
+    <label for="state" class="lab1">Email</label>
   </span>
   <span>
     <input
@@ -23,8 +23,9 @@
       placeholder="Login"
       id="login"
       autocomplete="off"
+      [(ngModel)]="loginValue"
     />
-    <label for="state">Login</label>
+    <label for="state" class="lab1">Login</label>
   </span>
   <span>
     <input
@@ -33,8 +34,9 @@
       placeholder="Password"
       id="pass"
       autocomplete="off"
+      [(ngModel)]="passValue"
     />
-    <label for="state">Password</label>
+    <label for="state" class="lab1">Password</label>
   </span>
   <span>
     <input
@@ -43,8 +45,9 @@
       placeholder="Repeat Password"
       id="passr"
       autocomplete="off"
+      [(ngModel)]="passRepeatValue"
     />
-    <label for="state">Repeat Password</label>
+    <label for="state" class="lab1"> Repeat Password</label>
   </span>
 </div>
 <div class="column" [hidden]="mode == 2">
@@ -56,8 +59,12 @@
       placeholder="Login"
       id="emaill"
       autocomplete="off"
+      [(ngModel)]="signInLogin"
     />
-    <label for="state" class="red">Login</label>
+    <label for="state" class="lab1 red">Login</label>
+    <label for="state" class="alert red" [hidden]="!this.alerts.siLogin">{{
+      this.alerts.siLoginValue
+    }}</label>
   </span>
   <span>
     <input
@@ -66,9 +73,17 @@
       placeholder="Password"
       id="loginn"
       autocomplete="off"
+      [(ngModel)]="signInPass"
     />
-    <label for="state" class="red">Password</label>
+    <label for="state" class="lab1 red">Password</label>
+    <label for="state" class="alert red" [hidden]="!this.alerts.siPass">{{
+      this.alerts.siPassValue
+    }}</label>
   </span>
 </div>
 <app-mainbutton content="Sign up" [hidden]="mode == 3"></app-mainbutton>
-<app-mainbutton content="Sign in" [hidden]="mode == 2"></app-mainbutton>
+<app-mainbutton
+  content="Sign in"
+  [hidden]="mode == 2"
+  (click)="login()"
+></app-mainbutton>

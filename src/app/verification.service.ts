@@ -4,14 +4,13 @@ import { Router } from '@angular/router';
 import { Client } from './models/Client';
 import { map, Observable } from 'rxjs';
 import { TokenPayload } from './models/TokenPayload';
-import { userInfo } from 'os';
 
 @Injectable({
   providedIn: 'root',
 })
 export class VerificationService {
   private token: string;
-  baseUrl: string = './ver_api';
+  baseUrl: string = '/verapi';
   public client: Client = {} as any;
 
   constructor(private http: HttpClient, private router: Router) {
