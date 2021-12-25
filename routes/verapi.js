@@ -41,22 +41,21 @@ const objectWithoutKey = (object, key) => {
 
 verapi.post("/plandemic_reg", (req, res) => {
   const clientData = {
-    login: req.body.login,
-    email: req.body.email,
-    password: req.body.password,
+    pd_l: req.body.login,
+    pd_h: req.body.password,
+    pd_e: req.body.email,
   };
 
   Client.findOne({
     where: {
-      pd_l: clientData.login,
+      pd_l: clientData.pd_l,
     },
   })
     .then((client) => {
       if (!client || client == null) {
-        let hash = bcrypt.hashSync(clientData.password, 10);
-        clientData.password = hash;
-        client
-          .create(clientData)
+        let hash = bcrypt.hashSync(clientData.pd_h, 10);
+        clientData.pd_h = hash;
+        Client.create(clientData)
           .then((client) => {
             client.dataValues.id = client.null;
             let token = jwt.sign(
@@ -84,18 +83,18 @@ verapi.post("/plandemic_reg", (req, res) => {
 
 verapi.post("/plandemic_log", (req, res) => {
   const clientData = {
-    login: req.body.login,
-    password: req.body.password,
+    pd_l: req.body.login,
+    pd_h: req.body.password,
   };
 
   Client.findOne({
     where: {
-      pd_l: clientData.login,
+      pd_l: clientData.pd_l,
     },
   })
     .then((client) => {
       if (client) {
-        let pass = bcrypt.compareSync(clientData.password, client.pd_h);
+        let pass = bcrypt.compareSync(clientData.pd_h, client.pd_h);
 
         if (pass) {
           let token = jwt.sign(
