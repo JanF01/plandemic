@@ -110,14 +110,17 @@ export class SignupComponent implements OnInit {
       return false;
     }
     this.verify.login(this.signInLogin, this.signInPass).subscribe((resp) => {
+      console.log(resp);
       if (resp.error) {
         this.alerts.siPass = true;
         this.alerts.siPassValue = resp.error;
       } else if (resp == 'ude') {
         this.alerts.siLogin = true;
         this.alerts.siLoginValue = "User doesn't exist";
+      } else if (resp == 'wp') {
+        this.alerts.siPass = true;
+        this.alerts.siPassValue = 'Wrong password';
       } else {
-        this.router.navigateByUrl('/');
         location.reload();
       }
     });

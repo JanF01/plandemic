@@ -14,7 +14,7 @@ export class GuardService {
     if (token && token != undefined && token != null) {
       if (token.length > 0) {
         if (this.verify.isLoggedIn()) {
-          this.router.navigateByUrl('platform/dashboards');
+          this.router.navigateByUrl('platform/dashboard');
           return true;
         } else return false;
       }
