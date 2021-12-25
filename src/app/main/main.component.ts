@@ -17,6 +17,17 @@ export class MainComponent implements OnInit {
 
   signUp(value: Event) {
     this.mode = 2;
-    this.modeChanged.emit(2);
+  }
+
+  changeMode(value: any) {
+    this.mode = value;
+  }
+
+  switchMode(value: any) {
+    if (value == 'main') {
+      this.mode = 1;
+    } else if (value == 'signIn') {
+      this.mode = 3;
+    }
   }
 }

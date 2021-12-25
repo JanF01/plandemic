@@ -10,6 +10,22 @@ import { MainMenuComponent } from './main/main-menu/main-menu.component';
 import { MainbuttonComponent } from './main/main-menu/mainbutton/mainbutton.component';
 import { SignupComponent } from './main/signup/signup.component';
 import { FormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
+import { PlatformComponent } from './platform/platform.component';
+import { DashboardComponent } from './platform/dashboard/dashboard.component';
+import { NotesComponent } from './platform/notes/notes.component';
+
+const appRoutes: Routes = [
+  { path: '', component: MainComponent, pathMatch: 'full' },
+  {
+    path: 'platform',
+    component: PlatformComponent,
+    children: [
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'notes', component: NotesComponent },
+    ],
+  },
+];
 
 @NgModule({
   declarations: [
@@ -19,8 +35,17 @@ import { FormsModule } from '@angular/forms';
     MainMenuComponent,
     MainbuttonComponent,
     SignupComponent,
+    DashboardComponent,
+    PlatformComponent,
+    NotesComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [
+    RouterModule.forRoot(appRoutes),
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

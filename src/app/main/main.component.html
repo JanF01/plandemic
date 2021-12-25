@@ -1,3 +1,7 @@
+<app-navigation
+  [mode]="mode"
+  (navigation)="switchMode($event)"
+></app-navigation>
 <main>
   <app-main-menu
     [ngClass]="{ hide: mode != 1 }"
