@@ -119,4 +119,33 @@ verapi.post("/plandemic_log", (req, res) => {
     });
 });
 
+verapi.post("/update_token", (req, res) => {
+  const clientData = {
+    login: req.body.login,
+  };
+
+  Client.findOne({
+    where: {
+      pd_l: clientData.login,
+    },
+  })
+    .then((client) => {
+      if (client) {
+        let token = jwt.sign(
+          objectWithoutKey(client.dataValues, "pd_h"),
+          process.env.SECRET_KEY,
+          {
+            expiresIn: 7200,
+          }
+        );
+        res.json({
+          token: token,
+        });
+      }
+    })
+    .catch((error) => {
+      res.json("error" + error);
+    });
+});
+
 module.exports = verapi;
