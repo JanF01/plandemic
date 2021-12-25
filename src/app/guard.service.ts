@@ -13,8 +13,10 @@ export class GuardService {
 
     if (token && token != undefined && token != null) {
       if (token.length > 0) {
-        this.router.navigateByUrl('platform/notes');
-        return this.verify.isLoggedIn();
+        if (this.verify.isLoggedIn()) {
+          this.router.navigateByUrl('platform/dashboards');
+          return true;
+        } else return false;
       }
     }
 
