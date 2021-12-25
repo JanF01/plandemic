@@ -70,8 +70,11 @@ export class SignupComponent implements OnInit {
       this.alerts.pass = true;
       this.alerts.passValue = 'Minimum 7 characters';
       return false;
+    } else {
+      this.alerts.pass = false;
     }
     if (this.passValue == this.passRepeatValue) {
+      this.alerts.passRepeat = false;
       return true;
     } else {
       this.alerts.passRepeat = true;
@@ -81,12 +84,14 @@ export class SignupComponent implements OnInit {
   }
 
   loginValidator(): boolean {
-    if (this.login.length <= 2) {
+    if (this.loginValue.length <= 2) {
       this.alerts.login = true;
       this.alerts.loginValue = 'Minimum 2 characters';
       return false;
+    } else {
+      this.alerts.login = false;
+      return true;
     }
-    return true;
   }
 
   loginSiValidator(): boolean {
@@ -94,6 +99,8 @@ export class SignupComponent implements OnInit {
       this.alerts.siLogin = true;
       this.alerts.siLoginValue = 'Minimum 2 characters';
       return false;
+    } else {
+      this.alerts.siLogin = false;
     }
     return true;
   }
@@ -128,7 +135,11 @@ export class SignupComponent implements OnInit {
     if (!this.emailValidator()) {
       this.alerts.email = true;
       this.alerts.emailValue = 'Invalid e-mail';
+    } else {
+      this.alerts.email = false;
     }
+
+    console.log(this.passed);
 
     if (this.passed)
       this.verify
