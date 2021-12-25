@@ -25,6 +25,8 @@ const appRoutes: Routes = [
       { path: 'notes', component: NotesComponent },
     ],
   },
+  { path: '404', redirectTo: '' },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({

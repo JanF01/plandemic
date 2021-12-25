@@ -11,7 +11,6 @@ export class PlatformComponent implements OnInit {
   constructor(private guard: GuardService, private router: Router) {}
 
   ngOnInit(): void {
-    this.router.navigate(['']);
     this.guard.isLoggedIn();
   }
 }
