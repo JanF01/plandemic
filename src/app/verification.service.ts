@@ -70,14 +70,18 @@ export class VerificationService {
       payload = token.split('.')[1];
       payload = window.atob(payload);
 
-      let client = JSON.parse(payload);
+      let tokenPayload = JSON.parse(payload);
 
-      this.client = new Client(client.id, client.login);
+      this.client = new Client(
+        tokenPayload.id,
+        tokenPayload.pd_l,
+        tokenPayload.pd_e
+      );
 
-      return client;
+      return tokenPayload;
     } else {
       let errorPayload: TokenPayload = {
-        id: 444,
+        id: 0,
         email: 'error',
         login: 'error',
         exp: 44444,
@@ -85,6 +89,23 @@ export class VerificationService {
       };
       return errorPayload;
     }
+  }
+
+  public updateToken(nick: string): Observable<any> {
+    const base = this.http.post(this.baseUrl + '/update_token', {
+      login: nick,
+    });
+
+    const request = base.pipe(
+      map((data: any) => {
+        if (data.token) {
+          this.saveToken(data.token);
+        }
+        return data;
+      })
+    );
+
+    return request;
   }
 
   public isLoggedIn(): boolean {
