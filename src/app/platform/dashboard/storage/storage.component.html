@@ -1,0 +1,24 @@
+<main>
+  <p>PLANDEMIC</p>
+  <ul>
+    <li><img src="assets/search.png" />Search</li>
+    <li><img src="assets/resent.png" />Resent notes</li>
+  </ul>
+  <p>STORAGE</p>
+  <ul class="folders">
+    <li *ngFor="let folder of folders; index as i" (click)="switchFolder(i)">
+      <img class="arr" src="assets/up-arrow.png" [hidden]="!folder.open" /><img
+        class="arr"
+        src="assets/down-arrow.png"
+        [hidden]="folder.open"
+      />
+      <img src="assets/folder.png" />
+      {{ folder.name }}
+      <ul class="f1" [hidden]="!folder.open">
+        <li *ngFor="let note of folder.notes">
+          <img src="assets/sticky_note_red.png" /> {{ note }}
+        </li>
+      </ul>
+    </li>
+  </ul>
+</main>

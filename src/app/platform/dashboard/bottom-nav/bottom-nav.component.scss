@@ -1,0 +1,40 @@
+@import "../../../../assets/variables.scss";
+
+.hide {
+  max-height: 100vh;
+  height: 100vh;
+  min-width: 100vw;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+
+  nav {
+    background-color: rgb(17, 107, 134);
+    @include borderRadius(4em);
+    width: 18em;
+    padding: 0.5em 0.8em 4em 0.8em;
+    position: absolute;
+    bottom: -4.2em;
+    left: calc(50% - 9.8em);
+
+    ul {
+      display: flex;
+      align-items: center;
+      list-style-type: none;
+      li {
+        color: white;
+        font-weight: 700;
+        width: calc(100% / 3);
+        display: flex;
+        justify-content: flex-start;
+        img {
+          width: 40px;
+
+          filter: hue-rotate(20deg);
+        }
+      }
+    }
+  }
+}

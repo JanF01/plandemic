@@ -14,6 +14,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { PlatformComponent } from './platform/platform.component';
 import { DashboardComponent } from './platform/dashboard/dashboard.component';
 import { NotesComponent } from './platform/notes/notes.component';
+import { BottomNavComponent } from './platform/dashboard/bottom-nav/bottom-nav.component';
+import { AngularSvgIconModule } from 'angular-svg-icon';
+import { StorageComponent } from './platform/dashboard/storage/storage.component';
+import { EditorComponent } from './platform/dashboard/editor/editor.component';
+import { PinnedComponent } from './platform/dashboard/pinned/pinned.component';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent, pathMatch: 'full' },
@@ -40,6 +45,10 @@ const appRoutes: Routes = [
     DashboardComponent,
     PlatformComponent,
     NotesComponent,
+    BottomNavComponent,
+    StorageComponent,
+    EditorComponent,
+    PinnedComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -47,6 +56,7 @@ const appRoutes: Routes = [
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    AngularSvgIconModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,3 +1,10 @@
-p {
-  background-color: yellowgreen;
+@import "../../../assets/variables.scss";
+
+main {
+  max-height: 100vh;
+  height: 100vh;
+  background-color: rgb(61, 62, 66);
+  .rowflex {
+    display: flex;
+  }
 }
