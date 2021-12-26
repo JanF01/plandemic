@@ -113,6 +113,8 @@ export class VerificationService {
     return client ? client.exp > Date.now() / 1000 : false;
   }
 
+  
+
   public logout(): void {
     this.token = '';
     localStorage.removeItem('pdc_js_tk');
