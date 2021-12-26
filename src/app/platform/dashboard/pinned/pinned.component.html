@@ -1,9 +1,10 @@
 <main>
   <p class="title">Pinned Notes</p>
   <div class="notes">
-    <img src="assets/sticky_note_blue.png" />
-    <img src="assets/sticky_note_blue.png" />
-    <img src="assets/sticky_note_blue.png" />
-    <img src="assets/sticky_note_blue.png" />
+    <ul>
+      <li *ngFor="let pin of pinnedNotes">
+        <img src="assets/pinned.png" /><span>{{ pin }}</span>
+      </li>
+    </ul>
   </div>
 </main>

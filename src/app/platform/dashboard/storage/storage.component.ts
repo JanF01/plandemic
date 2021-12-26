@@ -17,12 +17,18 @@ export class StorageComponent implements OnInit {
   folders: Array<Folder> = [
     {
       name: 'Notes 25.12.2021',
-      notes: ['Note 1', 'Note 2', 'Note 3'],
+      notes: ['To sorry world', 'Note 2', 'Incommode he'],
       open: false,
     },
     {
       name: 'Notes 22.12.2021',
-      notes: ['Note 1', 'Note 2', 'Note 3', 'Note 2', 'Note 3'],
+      notes: [
+        'Note 1',
+        'Entrance strongly packages',
+        'Note 3',
+        'Note 2',
+        'Note 3',
+      ],
       open: false,
     },
     {
