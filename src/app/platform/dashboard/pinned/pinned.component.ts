@@ -16,7 +16,13 @@ export class PinnedComponent implements OnInit {
     'Books worth to read',
   ];
 
+  switchedOn: number = -1;
+
   constructor() {}
 
   ngOnInit(): void {}
+
+  changeColor(index: number) {
+    this.switchedOn = index;
+  }
 }

@@ -2,8 +2,8 @@
   <p class="title">Pinned Notes</p>
   <div class="notes">
     <ul>
-      <li *ngFor="let pin of pinnedNotes">
-        <img src="assets/pinned.png" /><span>{{ pin }}</span>
+      <li *ngFor="let pin of pinnedNotes; index as i" (click)="changeColor(i)">
+        <span [ngClass]="{ on: this.switchedOn == i }">{{ pin }}</span>
       </li>
     </ul>
   </div>
