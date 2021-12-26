@@ -6,33 +6,88 @@
   min-width: 100vw;
 
   position: absolute;
-  top: 0;
+
   left: 0;
   overflow: hidden;
 
-  nav {
-    background-color: rgb(17, 107, 134);
-    @include borderRadius(4em);
-    width: 18em;
-    padding: 0.5em 0.8em 4em 0.8em;
+  > img {
+    width: 30px;
     position: absolute;
-    bottom: -4.2em;
-    left: calc(50% - 9.8em);
+    bottom: 0.3em;
+    left: calc(50% - 15px);
+    cursor: pointer;
+    z-index: 30;
+    transition: all 0.2s;
+  }
 
+  nav {
+    @include borderRadius(2em);
+    width: 15vw;
+    padding-bottom: 1.8em;
+    transition: all 0.2s;
+
+    position: absolute;
+    bottom: 5em;
+    z-index: 30;
+    left: 0;
     ul {
-      display: flex;
       align-items: center;
       list-style-type: none;
+      width: 75%;
+      padding: 0em 1em 0em 1em;
+      margin: 0;
+      justify-content: flex-start;
+      &.main {
+        display: flex;
+        margin-left: 12.5%;
+        li {
+          flex: 1;
+          &:nth-child(2) {
+            img {
+              width: 45px;
+              position: relative;
+              bottom: 2.2px;
+            }
+          }
+          &:nth-child(3) {
+            img {
+              width: 45px;
+              position: relative;
+              bottom: 2.2px;
+            }
+          }
+        }
+      }
+      &.lo {
+        position: absolute;
+        bottom: -4.5em;
+      }
       li {
         color: white;
-        font-weight: 700;
-        width: calc(100% / 3);
+        font-weight: 900;
         display: flex;
-        justify-content: flex-start;
-        img {
-          width: 40px;
+        justify-content: left;
+        transition: all 0.15s;
+        &:hover {
+          cursor: pointer;
+          transform: scale(0.97);
+        }
+        &.logout {
+          display: flex;
+          align-items: center;
+        }
 
+        img {
+          width: 50px;
           filter: hue-rotate(20deg);
+        }
+
+        &.logout {
+          padding-left: 0;
+
+          img {
+            margin-left: 0.3em;
+          }
         }
       }
     }

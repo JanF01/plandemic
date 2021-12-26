@@ -1,7 +1,14 @@
 <main>
   <div class="title">
-    <img src="assets/note-icon.png" />
-    <p>Note 1</p>
+    <img [src]="getNoteColor()" (click)="changeColor()" />
+    <p>Italian daily life words</p>
+  </div>
+  <div class="menu">
+    <img src="assets/left-arrow.png" />
+    <img src="assets/right-arrow.png" />
+    <img src="assets/hashtag.png" />
+    <img src="assets/pin2.png" title="Pin the note" />
+    <img src="assets/edit.png" title="Edit the note" />
   </div>
   <div class="content">
     <p>This is my first note.</p>
@@ -30,10 +37,39 @@
       continual dependent.
     </p>
     <ul>
-      <li>One</li>
-      <li>One</li>
-      <li>One</li>
-      <li>One</li>
+      <li>Uno</li>
+      <li>Due</li>
+      <li>Tre</li>
+      <li>Quatro</li>
+      <li></li>
     </ul>
+    <mat-card class="checkboxCard">
+      <mat-card-content>
+        <section class="checkboxes">
+          <mat-checkbox [color]="this.checkboxColor">First Goal</mat-checkbox>
+        </section>
+        <section class="checkboxes">
+          <mat-checkbox [color]="this.checkboxColor">Second Goal</mat-checkbox>
+        </section>
+        <section class="checkboxes">
+          <mat-checkbox [color]="this.checkboxColor">Nie no co ty</mat-checkbox>
+        </section>
+        <section class="checkboxes">
+          <mat-checkbox [color]="this.checkboxColor"
+            >Italian pasztet</mat-checkbox
+          >
+        </section>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="noteInfo">
+    Created Mon, December 20, 2021&nbsp;&nbsp;&nbsp;&nbsp;Tags: #Italian
+    #Learning #Revision
+  </div>
+  <div class="menu bot">
+    <div class="file">
+      Add File
+      <img src="assets/add-file.png" />
+    </div>
   </div>
 </main>

@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatCardModule } from '@angular/material/card';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +21,7 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 import { StorageComponent } from './platform/dashboard/storage/storage.component';
 import { EditorComponent } from './platform/dashboard/editor/editor.component';
 import { PinnedComponent } from './platform/dashboard/pinned/pinned.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent, pathMatch: 'full' },
@@ -57,6 +60,9 @@ const appRoutes: Routes = [
     FormsModule,
     HttpClientModule,
     AngularSvgIconModule.forRoot(),
+    BrowserAnimationsModule,
+    MatCheckboxModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

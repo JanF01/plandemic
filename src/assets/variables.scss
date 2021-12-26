@@ -3,7 +3,11 @@ $vdark: #000206;
 $dorange: #bb3e03;
 $orange: #ca6702;
 $lightorange: #ee9b00;
-
+$blue: rgb(7, 94, 121);
+$lblue: rgb(10, 117, 150);
+$red: rgb(122, 22, 25);
+$lred: rgb(172, 42, 46);
+$dred: rgb(105, 15, 18);
 @mixin borderRadius($b) {
   border-radius: $b;
   -ms-border-radius: $b;

@@ -1,8 +1,14 @@
 <main>
+  <div class="colors">
+    <div class="orange"></div>
+    <div class="red"></div>
+    <div class="blue"></div>
+  </div>
   <p>PLANDEMIC</p>
-  <ul>
-    <li><img src="assets/search.png" />Search</li>
+  <ul class="first">
+    <li><img src="assets/search.png" />Search...</li>
     <li><img src="assets/resent.png" />Resent notes</li>
+    <li><img src="assets/add-note.png" />New note</li>
   </ul>
   <p>STORAGE</p>
   <ul class="folders">
@@ -16,9 +22,17 @@
       {{ folder.name }}
       <ul class="f1" [hidden]="!folder.open">
         <li *ngFor="let note of folder.notes">
-          <img src="assets/sticky_note_red.png" /> {{ note }}
+          <img src="assets/sticky_note.png" /> {{ note }}
         </li>
       </ul>
+    </li>
+    <li class="n"><img src="assets/create-folder.png" />Create folder</li>
+  </ul>
+  <p>SMART FEATURES</p>
+  <ul>
+    <li>
+      <img src="assets/repeat.png" />
+      Review
     </li>
   </ul>
 </main>
