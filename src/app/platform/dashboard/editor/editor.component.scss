@@ -1,16 +1,21 @@
 @import "../../../../assets/variables";
 main {
-  min-width: 70vw;
-  max-width: 70vw;
+  min-width: calc(84.3vw - 8.2em);
+  max-width: calc(84.3vw - 8.2em);
   height: 100vh;
   min-height: 100vh;
-  margin-left: 15vw;
+  padding-left: 3em;
   color: white;
   .title {
-    margin: 0;
+    margin-top: 1em;
+    margin-left: 1.2em;
     padding-left: 1.3em;
     display: flex;
     align-items: center;
+    // background: rgb(241, 238, 238);
+    box-shadow: rgb(26, 25, 25) 0em 0.1em 0.9em -0.2em;
+    @include borderRadius(2em);
+    width: 30%;
 
     img {
       width: 28px;
@@ -18,27 +23,32 @@ main {
       cursor: pointer;
     }
     p {
-      margin: 0.5em;
+      margin: 0.7em;
 
       font-size: 1.5em;
-      font-weight: 1000;
-      letter-spacing: 0.01em;
-      margin-left: 0.4em;
+      font-weight: 500;
+
+      margin-left: 0.7em;
     }
   }
   .menu {
     position: absolute;
-    right: 16vw;
-    top: 0;
-    width: 40%;
-    padding: 0.7em;
+    right: 17.1vw;
+    top: 1em;
+
+    padding: 0.6em;
+    padding-right: 1.8em;
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    background: rgb(241, 238, 238);
+    box-shadow: rgb(26, 25, 25) 0em 0.13em 0.9em 0.06em;
+    @include borderRadius(2em);
     img {
       width: 32px;
       margin-left: 0.7em;
       transition: all 0.15ss;
+      filter: brightness(10%);
       &:hover {
         cursor: pointer;
         transform: scale(0.94);
@@ -58,7 +68,7 @@ main {
     line-height: 1.6em;
     font-weight: 400;
     ul {
-      list-style-type: circle;
+      list-style-type: disc;
     }
     .checkboxCard {
       background: transparent !important;
@@ -78,10 +88,16 @@ main {
     letter-spacing: 0.03em;
     position: absolute;
     bottom: 1.7em;
-    left: 17vw;
+    left: 8vw;
   }
   .bot {
     top: calc(100vh - 1.4em - 40px);
+    background: transparent;
+    box-shadow: none;
+    right: 16vw;
+    img {
+      filter: brightness(100%);
+    }
     .file {
       display: flex;
       align-items: center;

@@ -1,4 +1,16 @@
 <div class="hide">
+  <img
+    src="assets/hamburger.png"
+    class="open_m"
+    (click)="openMenu()"
+    [hidden]="menuOpen"
+  />
+  <img
+    src="assets/close.png"
+    class="open_m x"
+    [hidden]="!menuOpen"
+    (click)="openMenu()"
+  />
   <nav id="botNav">
     <ul class="main">
       <li>
@@ -8,7 +20,9 @@
       <li><img src="assets/task-list.png" /></li>
     </ul>
     <ul class="lo">
-      <li class="logout">LOG <br />OUT<img src="assets/out.png" /></li>
+      <li class="logout" (click)="logout()">
+        LOG <br />OUT<img src="assets/out.png" />
+      </li>
     </ul>
   </nav>
 </div>
