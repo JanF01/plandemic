@@ -62,7 +62,7 @@ verapi.post("/plandemic_reg", (req, res) => {
               objectWithoutKey(client.dataValues, "pd_h"),
               process.env.SECRET_KEY,
               {
-                expiresIn: 7200,
+                expiresIn: "2h",
               }
             );
             res.json({
@@ -101,7 +101,7 @@ verapi.post("/plandemic_log", (req, res) => {
             objectWithoutKey(client.dataValues, "pd_h"),
             process.env.SECRET_KEY,
             {
-              expiresIn: 7200,
+              expiresIn: "2h",
             }
           );
           res.json({
