@@ -3,8 +3,16 @@
 main {
   max-height: 100vh;
   height: 100vh;
-  background-color: rgb(61, 62, 66);
+  background-color: rgb(69, 70, 73);
   .rowflex {
     display: flex;
+  }
+  app-editor {
+    z-index: 33;
+    height: 100vh;
+    background-color: rgb(61, 62, 66);
+    margin-left: 5.5em;
+    border-top-left-radius: 3.4em;
+    border-bottom-left-radius: 3em;
   }
 }

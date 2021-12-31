@@ -6,10 +6,15 @@ main {
   max-height: 100vh;
   position: absolute;
   top: 0;
-  left: 0;
-  background-color: rgb(10, 117, 150);
-  border-right: rgb(15, 88, 110) solid 0.35em;
-  z-index: 20;
+  left: 8.3vh;
+  background-color: $orange;
+  //border-right: $dorange solid 0.2em;
+  border-top-left-radius: 3.2em;
+  border-bottom-left-radius: 3em;
+  box-shadow: inset 0.1em 0 0.3em 0em $dorange,
+    1em 0em 0.7em -0.5em rgb(58, 57, 57);
+  z-index: 34;
+  padding-left: 1.3em;
   .colors {
     display: flex;
     height: 1.8em;

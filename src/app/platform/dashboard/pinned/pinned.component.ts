@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PinnedComponent implements OnInit {
   pinnedNotes: Array<string> = [
-    'The movies that I want to watch',
+    'The movies that I want...',
     'Calculus Integrals Exam',
     'Italian daily life words',
     'Electronics revision',

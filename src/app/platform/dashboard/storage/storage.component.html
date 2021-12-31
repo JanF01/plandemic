@@ -1,4 +1,4 @@
-<main>
+<main id="menu">
   <div class="colors">
     <div class="orange"></div>
     <div class="red"></div>
@@ -22,7 +22,7 @@
       {{ folder.name }}
       <ul class="f1" [hidden]="!folder.open">
         <li *ngFor="let note of folder.notes">
-          <img src="assets/sticky_note.png" /> {{ note }}
+          <img src="assets/sticky_note_red.png" /> {{ note }}
         </li>
       </ul>
     </li>
