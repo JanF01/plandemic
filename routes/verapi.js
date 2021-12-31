@@ -5,7 +5,7 @@ const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
-const Client = require("../Entity/Client");
+const Client = require("../models/Client");
 
 verapi.use(cors());
 

@@ -14,8 +14,10 @@ app.use(
 );
 
 var ver_api = require("./routes/verapi");
+var notes_api = require("./routes/notesapi");
 
 app.use("/verapi", ver_api);
+app.use("/notesapi", notes_api);
 
 http.listen(port, function () {
   console.log("Server is running on port: " + port);
