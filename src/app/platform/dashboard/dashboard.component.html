@@ -1,8 +1,12 @@
 <main>
   <app-bottom-nav></app-bottom-nav>
   <div class="rowflex">
-    <app-storage></app-storage>
+    <app-storage (createNote)="openCreateNoteModal($event)"></app-storage>
     <app-editor></app-editor>
     <app-pinned></app-pinned>
+    <app-center-edit
+      [hidden]="!createNoteModal"
+      (closeWindow)="closeCreateNoteModal($event)"
+    ></app-center-edit>
   </div>
 </main>

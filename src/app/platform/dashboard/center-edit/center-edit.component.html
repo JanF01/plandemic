@@ -1,0 +1,25 @@
+<main>
+  <div class="upper">
+    <p>CREATE A NEW NOTE</p>
+  </div>
+  <div class="lower">
+    <div class="data">
+      <input type="text" [(ngModel)]="title" placeholder="Title" />
+      <div class="tags">
+        <div class="tagslist">
+          <ul>
+            <li>#School</li>
+            <li>#Italian</li>
+            <li>#Programming</li>
+          </ul>
+        </div>
+        <div class="tagsadded">Choose your tags</div>
+      </div>
+    </div>
+    <div class="buttons">
+      <app-mainbutton content="CREATE"></app-mainbutton>
+      <app-mainbutton content="CANCEL" (click)="closeModal()"></app-mainbutton>
+    </div>
+  </div>
+</main>
+<div class="fade"></div>

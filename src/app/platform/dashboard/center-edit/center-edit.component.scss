@@ -1,0 +1,116 @@
+@import "../../../../assets/variables.scss";
+main {
+  min-width: 35em;
+  max-width: 35em;
+  height: 36em;
+  position: absolute;
+  left: calc(50% - 17.5em);
+  background-color: #ffffff93;
+  top: calc(50vh - 20em);
+  @include borderRadius(0.2em);
+  z-index: 100;
+  -webkit-box-shadow: 0 9px 23px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 9px 23px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 9px 23px rgba(0, 0, 0, 0.5);
+
+  .upper {
+    background: $orange;
+    height: 4em;
+    @include borderTopRadius(0.2em);
+    box-shadow: 0em 0em 0.4em 0em rgb(48, 47, 46);
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.02em;
+    p {
+      margin: 0;
+      padding: 0;
+      margin-left: 1em;
+      font-size: 1.1em;
+
+      color: white;
+    }
+  }
+  .lower {
+    height: 32em;
+    .data {
+      height: 25em;
+      input {
+        width: 80%;
+        margin-left: calc(10% - 0.75em);
+        outline: none;
+        border: none;
+        background: transparent;
+        font-family: "Raleway", "Courier New", Courier, monospace;
+        border: $orange solid 0.15em;
+        padding: 0.6em;
+        color: white;
+        font-size: 1.15em;
+        margin-top: 2em;
+        @include borderRadius(0.2em);
+        &::placeholder {
+          color: #ffffff90;
+        }
+        &:focus {
+          border: $lightorange solid 0.15em;
+        }
+      }
+      .tags {
+        display: flex;
+        width: 100%;
+
+        margin-top: 3em;
+        .tagslist {
+          margin-left: 7.5%;
+          width: 40%;
+
+          ul {
+            list-style-type: none;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            li {
+              width: 100%;
+              background: $orange;
+              margin-top: 0.3em;
+              color: white;
+              padding: 1em 0 1em 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              cursor: grab;
+
+              box-shadow: 0em 0.1em 0.2em 0em rgb(44, 44, 44);
+            }
+          }
+        }
+        .tagsadded {
+          margin-left: 5%;
+          width: 40%;
+          border-bottom: 0.2em solid $orange;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+        }
+      }
+    }
+    .buttons {
+      height: 7em;
+      width: 100%;
+      display: flex;
+
+      justify-content: center;
+    }
+  }
+}
+.fade {
+  min-height: 100vh;
+  height: 100vh;
+  min-width: 100vw;
+  width: 100vw;
+  background: #00000067;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 90;
+}

@@ -8,7 +8,9 @@
   <ul class="first">
     <li><img src="assets/search.png" />Search...</li>
     <li><img src="assets/resent.png" />Resent notes</li>
-    <li><img src="assets/add-note.png" />New note</li>
+    <li (click)="openCreateNote()">
+      <img src="assets/add-note.png" />New note
+    </li>
   </ul>
   <p>STORAGE</p>
   <ul class="folders">
@@ -19,10 +21,10 @@
         [hidden]="folder.open"
       />
       <img src="assets/folder.png" />
-      {{ folder.name }}
+      {{ folder.title }}
       <ul class="f1" [hidden]="!folder.open">
         <li *ngFor="let note of folder.notes">
-          <img src="assets/sticky_note_red.png" /> {{ note }}
+          <img [src]="getSrcOfNote(note)" /> {{ note.title }}
         </li>
       </ul>
     </li>

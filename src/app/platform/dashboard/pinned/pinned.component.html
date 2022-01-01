@@ -2,7 +2,10 @@
   <p class="title">Pinned Notes</p>
   <div class="notes">
     <ul>
-      <li *ngFor="let pin of pinnedNotes; index as i" (click)="changeColor(i)">
+      <li
+        *ngFor="let pin of pinnedNotes; index as i"
+        (click)="openNote(pin, i)"
+      >
         <span [ngClass]="{ on: this.switchedOn == i }">{{ pin.title }}</span>
       </li>
     </ul>

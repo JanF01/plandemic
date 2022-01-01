@@ -1,7 +1,7 @@
 <main>
   <div class="title">
     <img [src]="getNoteColor()" (click)="changeColor()" />
-    <p>Italian daily life words</p>
+    <p>{{ displayedNote.title }}</p>
   </div>
   <div class="menu">
     <img src="assets/left-arrow.png" />
@@ -11,38 +11,16 @@
     <img src="assets/edit.png" title="Edit the note" />
   </div>
   <div class="content">
-    <p>This is my first note.</p>
     <p>
-      Placing assured be if removed it besides on. Far shed each high read are
-      men over day. Afraid we praise lively he suffer family estate is. Ample
-      order up in of in ready. Timed blind had now those ought set often which.
-      Or snug dull he show more true wish. No at many deny away miss evil. On in
-      so indeed spirit an mother. Amounted old strictly but marianne admitted.
-      People former is remove remain as.
+      {{ displayedNote.unformattedContent }}
     </p>
-    <p>
-      She who arrival end how fertile enabled. Brother she add yet see minuter
-      natural smiling article painted. Themselves at dispatched interested
-      insensible am be prosperous reasonably it. In either so spring wished.
-      Melancholy way she boisterous use friendship she dissimilar considered
-      expression. Sex quick arose mrs lived. Mr things do plenty others an
-      vanity myself waited to. Always parish tastes at as mr father dining at.
-    </p>
-    <br /><br />
-    <p>
-      Gay one the what walk then she. Demesne mention promise you justice
-      arrived way. Or increasing to in especially inquietude companions
-      acceptance admiration. Outweigh it families distance wandered ye an. Mr
-      unsatiable at literature connection favourable. We neglected mr perfectly
-      continual dependent.
-    </p>
-    <ul>
+    <!-- <ul>
       <li>Uno</li>
       <li>Due</li>
       <li>Tre</li>
       <li>Quatro</li>
-    </ul>
-    <mat-card class="checkboxCard">
+    </ul> -->
+    <!-- <mat-card class="checkboxCard">
       <mat-card-content>
         <section class="checkboxes">
           <mat-checkbox [color]="this.checkboxColor">First Goal</mat-checkbox>
@@ -59,10 +37,10 @@
           >
         </section>
       </mat-card-content>
-    </mat-card>
+    </mat-card> -->
   </div>
   <div class="noteInfo">
-    Created Mon, December 20, 2021&nbsp;&nbsp;&nbsp;&nbsp;Tags: #Italian
+    Created {{ displayedNote.date }}&nbsp;&nbsp;&nbsp;&nbsp;Tags: #Italian
     #Learning #Revision
   </div>
   <div class="menu bot">

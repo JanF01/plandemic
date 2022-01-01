@@ -9,10 +9,8 @@ main {
   left: 8.3vh;
   background-color: $orange;
   //border-right: $dorange solid 0.2em;
-  border-top-left-radius: 3.2em;
-  border-bottom-left-radius: 3em;
-  box-shadow: inset 0.1em 0 0.3em 0em $dorange,
-    1em 0em 0.7em -0.5em rgb(58, 57, 57);
+
+  box-shadow: 1em 0em 0.7em -0.5em rgb(58, 57, 57);
   z-index: 34;
   padding-left: 1.3em;
   .colors {
@@ -61,6 +59,17 @@ main {
       line-height: 2em;
       font-weight: 600;
       letter-spacing: 0.03em;
+      li {
+        img {
+          transition: all 0.15s;
+        }
+        &:hover {
+          font-size: 0.98em;
+          img {
+            transform: scale(0.94);
+          }
+        }
+      }
     }
     li {
       cursor: pointer;

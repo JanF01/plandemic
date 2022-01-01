@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ClientService } from 'src/app/client.service';
+import { Note } from 'src/app/models/Note';
 import { NotesService } from 'src/app/notes.service';
 
 @Component({
@@ -9,15 +10,7 @@ import { NotesService } from 'src/app/notes.service';
   styleUrls: ['./pinned.component.scss'],
 })
 export class PinnedComponent implements OnInit {
-  pinnedNotes: Array<any> = [
-    'The movies that I want...',
-    'Calculus Integrals Exam',
-    'Italian daily life words',
-    'Electronics revision',
-    'C programming pointers',
-    'C - operations on files',
-    'Books worth to read',
-  ];
+  pinnedNotes: Array<Note> = [];
 
   switchedOn: number = -1;
   notesSub: Subscription = new Subscription();
@@ -38,7 +31,8 @@ export class PinnedComponent implements OnInit {
     });
   }
 
-  changeColor(index: number) {
-    this.switchedOn = index;
+  openNote(pin: Note, i: number) {
+    this.switchedOn = i;
+    this.notes.displayedNote.next(pin);
   }
 }

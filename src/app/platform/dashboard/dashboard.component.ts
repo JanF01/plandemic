@@ -9,6 +9,7 @@ import { VerificationService } from 'src/app/verification.service';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
+  createNoteModal: boolean = false;
   constructor(
     private router: Router,
     private guard: GuardService,
@@ -23,5 +24,12 @@ export class DashboardComponent implements OnInit {
   logout() {
     this.verify.logout();
     location.reload();
+  }
+
+  openCreateNoteModal(event: any) {
+    this.createNoteModal = true;
+  }
+  closeCreateNoteModal(event: any) {
+    this.createNoteModal = false;
   }
 }
