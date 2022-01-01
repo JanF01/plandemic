@@ -52,4 +52,43 @@ notesapi.get("/get_pinned/:id/:token", async function (req, res) {
   }
 });
 
+notesapi.get("/get_folders/:id/:token", async function (req, res) {
+  let client = req.params.id;
+  let token = req.params.token;
+
+  let decoded = jwt.verify(token, process.env.SECRET_KEY);
+
+  if (decoded) {
+    const folders = await Folder.findAll({
+      where: {
+        clientPdId: client,
+      },
+    });
+
+    res.json(folders);
+  }
+});
+
+notesapi.get(
+  "/get_notes_from_folder/:id/:token/:folderId",
+  async function (req, res) {
+    let client = req.params.id;
+    let token = req.params.token;
+    let folderId = req.params.folderId;
+
+    let decoded = jwt.verify(token, process.env.SECRET_KEY);
+
+    if (decoded) {
+      const notes = await Note.findAll({
+        where: {
+          clientPdId: client,
+          folderId: folderId,
+        },
+      });
+
+      res.json(notes);
+    }
+  }
+);
+
 module.exports = notesapi;
