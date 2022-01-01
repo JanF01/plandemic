@@ -73,7 +73,7 @@ export class VerificationService {
       let tokenPayload = JSON.parse(payload);
 
       this.client = new Client(
-        tokenPayload.id,
+        tokenPayload.pd_id,
         tokenPayload.pd_l,
         tokenPayload.pd_e
       );
@@ -81,9 +81,9 @@ export class VerificationService {
       return tokenPayload;
     } else {
       let errorPayload: TokenPayload = {
-        id: 0,
-        email: 'error',
-        login: 'error',
+        pd_id: 0,
+        pd_e: 'error',
+        pd_l: 'error',
         exp: 44444,
         iat: 44444,
       };
@@ -112,8 +112,6 @@ export class VerificationService {
     const client = this.getTokenPayload();
     return client ? client.exp > Date.now() / 1000 : false;
   }
-
-  
 
   public logout(): void {
     this.token = '';

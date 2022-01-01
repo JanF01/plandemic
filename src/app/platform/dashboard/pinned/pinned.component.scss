@@ -57,7 +57,8 @@ main {
         span {
           display: block;
           z-index: 30;
-          box-shadow: rgb(63, 62, 62) 0em 0em 0.2em 0.03em;
+          box-shadow: rgb(48, 46, 46) inset 0em 0em 0.2em 0em,
+            rgb(48, 46, 46) 0em 0em 0.2em 0em;
           background: $orange;
           text-align: right;
           padding: 0.6em;

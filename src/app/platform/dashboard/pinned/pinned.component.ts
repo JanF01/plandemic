@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { ClientService } from 'src/app/client.service';
+import { NotesService } from 'src/app/notes.service';
 
 @Component({
   selector: 'app-pinned',
@@ -6,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pinned.component.scss'],
 })
 export class PinnedComponent implements OnInit {
-  pinnedNotes: Array<string> = [
+  pinnedNotes: Array<any> = [
     'The movies that I want...',
     'Calculus Integrals Exam',
     'Italian daily life words',
@@ -17,10 +20,23 @@ export class PinnedComponent implements OnInit {
   ];
 
   switchedOn: number = -1;
+  notesSub: Subscription = new Subscription();
+  clientSub: Subscription = new Subscription();
 
-  constructor() {}
+  constructor(private notes: NotesService, private client: ClientService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.notesSub = this.notes.pinnedNotes.subscribe((notes) => {
+      this.pinnedNotes = notes;
+    });
+    this.clientSub = this.client.currentClient.subscribe({
+      next: (change) => {
+        if (change && change.id != undefined) {
+          this.notes.getPinnedNotes(change.id).subscribe((data) => {});
+        }
+      },
+    });
+  }
 
   changeColor(index: number) {
     this.switchedOn = index;

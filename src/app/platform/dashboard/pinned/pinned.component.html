@@ -3,7 +3,7 @@
   <div class="notes">
     <ul>
       <li *ngFor="let pin of pinnedNotes; index as i" (click)="changeColor(i)">
-        <span [ngClass]="{ on: this.switchedOn == i }">{{ pin }}</span>
+        <span [ngClass]="{ on: this.switchedOn == i }">{{ pin.title }}</span>
       </li>
     </ul>
   </div>

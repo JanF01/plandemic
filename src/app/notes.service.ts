@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { stringify } from 'querystring';
 import { map, Observable, Subject } from 'rxjs';
 import { Note } from './models/Note';
 
@@ -8,10 +7,14 @@ import { Note } from './models/Note';
   providedIn: 'root',
 })
 export class NotesService {
-  private pinnedNotes: Subject<Array<any>> = new Subject();
-  baseUrl: string = 'notes_api';
+  public pinnedNotes: Subject<Array<any>> = new Subject();
+  baseUrl: string = '/notesapi';
 
   constructor(private http: HttpClient) {}
+
+  private getToken() {
+    return String(window.localStorage.getItem('pdc_js_tk'));
+  }
 
   public changeNoteFolder(note: Note, folderId: number) {
     const base = this.http.post(this.baseUrl + '/change_note_folder', {
@@ -65,13 +68,16 @@ export class NotesService {
   }
 
   public getPinnedNotes(clientId: number): Observable<any> {
-    const base = this.http.get(this.baseUrl + '/get_pinned?client=' + clientId);
+    const token = this.getToken();
+    const base = this.http.get(
+      this.baseUrl + '/get_pinned/' + clientId + '/' + token
+    );
 
     const request = base.pipe(
       map((data: any) => {
-        if (data.pinnedNotes) {
-          this.pinnedNotes = data.pinnedNotes;
-          console.log(this.pinnedNotes);
+        if (data) {
+          this.pinnedNotes.next(data);
+          console.log(data);
         }
       })
     );
