@@ -1,7 +1,13 @@
 <main>
-  <app-bottom-nav></app-bottom-nav>
+  <app-bottom-nav
+    [menuOpen]="menuOpen"
+    (menuSwitch)="menuOpen = !menuOpen"
+  ></app-bottom-nav>
   <div class="rowflex">
-    <app-storage (createNote)="openCreateNoteModal($event)"></app-storage>
+    <app-storage
+      (createNote)="openCreateNoteModal($event)"
+      (closeMenu)="closeThatMenu()"
+    ></app-storage>
     <app-editor></app-editor>
     <app-pinned></app-pinned>
     <app-center-edit

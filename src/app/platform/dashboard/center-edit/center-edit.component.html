@@ -11,13 +11,15 @@
             <li>#School</li>
             <li>#Italian</li>
             <li>#Programming</li>
+            <li>#Work</li>
+            <li>#Meetings</li>
           </ul>
         </div>
         <div class="tagsadded">Choose your tags</div>
       </div>
     </div>
     <div class="buttons">
-      <app-mainbutton content="CREATE"></app-mainbutton>
+      <app-mainbutton content="CREATE" (click)="createNote()"></app-mainbutton>
       <app-mainbutton content="CANCEL" (click)="closeModal()"></app-mainbutton>
     </div>
   </div>

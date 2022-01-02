@@ -5,13 +5,13 @@ main {
   height: 36em;
   position: absolute;
   left: calc(50% - 17.5em);
-  background-color: #ffffff93;
+  background-color: #ffffff43;
   top: calc(50vh - 20em);
   @include borderRadius(0.2em);
   z-index: 100;
-  -webkit-box-shadow: 0 9px 23px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 0 9px 23px rgba(0, 0, 0, 0.5);
-  box-shadow: 0 9px 23px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 8px 19px rgba(131, 124, 124, 0.6);
+  -moz-box-shadow: 0 8px 19px rgba(131, 124, 124, 0.6);
+  box-shadow: 0 8px 19px rgba(131, 124, 124, 0.6);
 
   .upper {
     background: $orange;
@@ -36,12 +36,12 @@ main {
       height: 25em;
       input {
         width: 80%;
-        margin-left: calc(10% - 0.75em);
+        margin-left: calc(10% - 0.55em);
         outline: none;
         border: none;
         background: transparent;
         font-family: "Raleway", "Courier New", Courier, monospace;
-        border: $orange solid 0.15em;
+        border-bottom: $vdark solid 0.2em;
         padding: 0.6em;
         color: white;
         font-size: 1.15em;
@@ -51,7 +51,7 @@ main {
           color: #ffffff90;
         }
         &:focus {
-          border: $lightorange solid 0.15em;
+          border-bottom: grey solid 0.2em;
         }
       }
       .tags {
@@ -62,12 +62,16 @@ main {
         .tagslist {
           margin-left: 7.5%;
           width: 40%;
-
+          max-height: 11.5em;
+          height: 11.5em;
+          overflow-y: scroll;
+          @include scrollbars(0.5em, $orange);
           ul {
             list-style-type: none;
             height: 100%;
             margin: 0;
             padding: 0;
+
             li {
               width: 100%;
               background: $orange;
@@ -86,7 +90,9 @@ main {
         .tagsadded {
           margin-left: 5%;
           width: 40%;
-          border-bottom: 0.2em solid $orange;
+          max-height: 11em;
+          height: 11em;
+          border: 0.2em solid grey;
           display: flex;
           align-items: center;
           justify-content: center;

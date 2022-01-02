@@ -15,3 +15,40 @@ $dred: rgb(105, 15, 18);
   -moz-border-radius: $b;
   -webkit-border-radius: $b;
 }
+
+@mixin borderTopRadius($b) {
+  border-top-left-radius: $b;
+  -ms-border-top-left-radius: $b;
+  -moz-border-top-left-radius: $b;
+  -webkit-border-top-left-radius: $b;
+  border-top-right-radius: $b;
+  -ms-border-top-right-radius: $b;
+  -moz-border-top-right-radius: $b;
+  -webkit-border-top-right-radius: $b;
+}
+
+@mixin scrollbars(
+  $size,
+  $foreground-color,
+  $background-color: mix($foreground-color, white, 50%)
+) {
+  // For Google Chrome
+  &::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $foreground-color;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $background-color;
+  }
+
+  // For Internet Explorer
+  & {
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
+  }
+}

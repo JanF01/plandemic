@@ -48,3 +48,15 @@ button {
     background-color: rgb(172, 42, 46);
   }
 }
+.cr,
+.ca {
+  padding: 0.7em 3em;
+}
+.ca {
+  background-color: rgb(146, 145, 145);
+  border: none;
+  border-bottom: 0.17em solid white;
+  &:hover {
+    background-color: rgba(39, 34, 18, 0.445);
+  }
+}

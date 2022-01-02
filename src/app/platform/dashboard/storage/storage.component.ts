@@ -5,6 +5,7 @@ import { NotesService } from 'src/app/notes.service';
 import { Folder } from 'src/app/models/Folder';
 import { Client } from 'src/app/models/Client';
 import { Note } from 'src/app/models/Note';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-storage',
@@ -13,12 +14,15 @@ import { Note } from 'src/app/models/Note';
 })
 export class StorageComponent implements OnInit {
   @Output() createNote: EventEmitter<any> = new EventEmitter();
-  foldersOpen: Array<boolean> = [false, false];
+  @Output() closeMenu: EventEmitter<any> = new EventEmitter();
 
   folders: Array<Folder> = [] as any;
 
+  notesWithNoFolder: Array<Note> = [] as any;
+
   foldersSub: Subscription = new Subscription();
   clientSub: Subscription = new Subscription();
+  notesSub: Subscription = new Subscription();
 
   currentClient: Client = {} as any;
 
@@ -30,11 +34,17 @@ export class StorageComponent implements OnInit {
         this.folders = change;
       },
     });
+    this.notesSub = this.notes.notesWithNoFolder.subscribe({
+      next: (change) => {
+        this.notesWithNoFolder = change;
+      },
+    });
     this.clientSub = this.client.currentClient.subscribe({
       next: (change) => {
         this.currentClient = change;
         if (change && change.id != undefined) {
           this.notes.getFolders(change.id).subscribe((data) => {});
+          this.loadNotesWithNoFolder();
         }
       },
     });
@@ -55,6 +65,10 @@ export class StorageComponent implements OnInit {
       });
   }
 
+  loadNotesWithNoFolder() {
+    this.notes.getNotesFromFolder(this.currentClient.id, null).subscribe();
+  }
+
   getSrcOfNote(note: Note) {
     switch (note.noteColor) {
       case 'blue':
@@ -65,8 +79,20 @@ export class StorageComponent implements OnInit {
         return 'assets/sticky_note.png';
     }
   }
+  openNote(note: Note) {
+    this.notes.displayedNote.next(note);
+    this.closeMenu.emit('n');
+  }
 
   openCreateNote(): void {
     this.createNote.emit('open');
+  }
+
+  drop(event: CdkDragDrop<Note[]>): void {
+    moveItemInArray(
+      this.notesWithNoFolder,
+      event.previousIndex,
+      event.currentIndex
+    );
   }
 }

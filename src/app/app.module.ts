@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +23,8 @@ import { StorageComponent } from './platform/dashboard/storage/storage.component
 import { EditorComponent } from './platform/dashboard/editor/editor.component';
 import { PinnedComponent } from './platform/dashboard/pinned/pinned.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CenterEditComponent } from './platform/dashboard/center-edit/center-edit.component';
+import { AlertComponent } from './alert/alert.component';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent, pathMatch: 'full' },
@@ -52,6 +55,8 @@ const appRoutes: Routes = [
     StorageComponent,
     EditorComponent,
     PinnedComponent,
+    CenterEditComponent,
+    AlertComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -63,6 +68,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MatCheckboxModule,
     MatCardModule,
+    DragDropModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

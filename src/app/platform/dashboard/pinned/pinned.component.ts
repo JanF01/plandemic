@@ -13,12 +13,21 @@ export class PinnedComponent implements OnInit {
   pinnedNotes: Array<Note> = [];
 
   switchedOn: number = -1;
+  pinnedNote: Note = {} as any;
   notesSub: Subscription = new Subscription();
   clientSub: Subscription = new Subscription();
 
   constructor(private notes: NotesService, private client: ClientService) {}
 
   ngOnInit(): void {
+    this.notes.displayedNote.subscribe({
+      next: (note) => {
+        if (this.pinnedNote != note) {
+          this.switchedOn = -1;
+          this.pinnedNote = {} as any;
+        }
+      },
+    });
     this.notesSub = this.notes.pinnedNotes.subscribe((notes) => {
       this.pinnedNotes = notes;
     });
@@ -33,6 +42,7 @@ export class PinnedComponent implements OnInit {
 
   openNote(pin: Note, i: number) {
     this.switchedOn = i;
+    this.pinnedNote = pin;
     this.notes.displayedNote.next(pin);
   }
 }

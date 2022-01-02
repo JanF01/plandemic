@@ -10,13 +10,14 @@ main {
   background-color: $orange;
   //border-right: $dorange solid 0.2em;
 
-  box-shadow: 1em 0em 0.7em -0.5em rgb(58, 57, 57);
+  box-shadow: 0.6em 0em 0.7em -0.5em rgb(58, 57, 57);
   z-index: 34;
-  padding-left: 1.3em;
+
   .colors {
     display: flex;
     height: 1.8em;
     margin-top: 0.8em;
+    margin-left: 0.8em;
     div {
       width: 1.8em;
       height: 100%;
@@ -41,7 +42,7 @@ main {
     font-weight: 500;
     letter-spacing: 0.1em;
     margin-top: 2.5em;
-    padding-left: 1em;
+    padding-left: 2em;
     display: flex;
     align-items: center;
     img {
@@ -54,12 +55,13 @@ main {
   }
   ul {
     list-style-type: none;
-    padding-left: 1em;
+    padding: 0em;
     &.first {
       line-height: 2em;
       font-weight: 600;
       letter-spacing: 0.03em;
       li {
+        padding: 0.35em 0.7em 0.1em 2em;
         img {
           transition: all 0.15s;
         }
@@ -77,11 +79,23 @@ main {
       display: flex;
       align-items: center;
       margin: 0;
-      padding: 0;
-      margin-top: 0.4em;
+      padding: 0.3em 0.5em 0.3em 2em;
+
       flex-wrap: wrap;
       &.n {
         margin-top: 0.7em;
+      }
+      &.note {
+        padding: 0.34em 0.5em 0.34em 2em;
+        position: relative;
+        &:hover {
+          background: $dorange;
+        }
+        img.drag {
+          position: absolute;
+          top: 0.34em;
+          right: 0;
+        }
       }
 
       img {
@@ -107,4 +121,15 @@ main {
       }
     }
   }
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.1),
+    0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 16px 2px rgba(0, 0, 0, 0.02);
+
+  img {
+    display: none;
+  }
+  color: transparent;
 }

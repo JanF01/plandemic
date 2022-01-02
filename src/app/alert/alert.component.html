@@ -1,0 +1,12 @@
+<div
+  class="alert"
+  [ngClass]="{ success: type == 'success', anim: input != '' }"
+>
+  <div class="left">
+    <img src="assets/success.png" />
+  </div>
+  <div class="right">
+    <p [hidden]="type != 'success'">SUCCESS</p>
+    {{ input }}
+  </div>
+</div>

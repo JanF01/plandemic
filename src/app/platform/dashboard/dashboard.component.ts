@@ -10,6 +10,7 @@ import { VerificationService } from 'src/app/verification.service';
 })
 export class DashboardComponent implements OnInit {
   createNoteModal: boolean = false;
+  menuOpen: boolean = false;
   constructor(
     private router: Router,
     private guard: GuardService,
@@ -31,5 +32,11 @@ export class DashboardComponent implements OnInit {
   }
   closeCreateNoteModal(event: any) {
     this.createNoteModal = false;
+  }
+
+  closeThatMenu() {
+    let menu = document.getElementById('menu') as HTMLElement;
+    menu.style.display = 'none';
+    this.menuOpen = false;
   }
 }

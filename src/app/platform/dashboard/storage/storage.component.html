@@ -14,6 +14,7 @@
   </ul>
   <p>STORAGE</p>
   <ul class="folders">
+    <li class="n"><img src="assets/create-folder.png" />Create folder</li>
     <li *ngFor="let folder of folders; index as i" (click)="switchFolder(i)">
       <img class="arr" src="assets/up-arrow.png" [hidden]="!folder.open" /><img
         class="arr"
@@ -28,7 +29,18 @@
         </li>
       </ul>
     </li>
-    <li class="n"><img src="assets/create-folder.png" />Create folder</li>
+    <div cdkDropList (cdkDropListDropped)="drop($event)">
+      <li
+        class="note"
+        *ngFor="let note of notesWithNoFolder"
+        (click)="openNote(note)"
+        draggable="false"
+        cdkDrag
+      >
+        <img [src]="getSrcOfNote(note)" /> {{ note.title }}
+        <img src="assets/move.png" class="drag" cdkDragHandle />
+      </li>
+    </div>
   </ul>
   <p>SMART FEATURES</p>
   <ul>

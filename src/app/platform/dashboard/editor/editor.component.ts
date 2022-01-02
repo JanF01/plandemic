@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { ClientService } from 'src/app/client.service';
 import { Note } from 'src/app/models/Note';
 import { NotesService } from 'src/app/notes.service';
 
@@ -22,11 +23,20 @@ export class EditorComponent implements OnInit {
     date: 'NOPERS',
   } as any;
 
+  clientId: number = -1;
   noteSub: Subscription = new Subscription();
+  clientSub: Subscription = new Subscription();
 
-  constructor(private notes: NotesService) {}
+  constructor(private notes: NotesService, private client: ClientService) {}
 
   ngOnInit(): void {
+    this.clientSub = this.client.currentClient.subscribe({
+      next: (change) => {
+        if (change && change.id != undefined) {
+          this.clientId = change.id;
+        }
+      },
+    });
     this.noteSub = this.notes.displayedNote.subscribe((note) => {
       this.displayedNote = note;
     });
@@ -42,5 +52,9 @@ export class EditorComponent implements OnInit {
 
   getNoteColor(): string {
     return 'assets/sticky_note' + this.noteColor + '.png';
+  }
+
+  pinNote() {
+    this.notes.pinNote(this.displayedNote, this.clientId).subscribe();
   }
 }

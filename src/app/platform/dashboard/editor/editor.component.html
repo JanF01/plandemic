@@ -7,7 +7,12 @@
     <img src="assets/left-arrow.png" />
     <img src="assets/right-arrow.png" />
     <img src="assets/hashtag.png" />
-    <img src="assets/pin2.png" title="Pin the note" />
+    <img
+      src="assets/pin2.png"
+      title="Pin the note"
+      (click)="pinNote()"
+      [ngClass]="{ off: !displayedNote.pinned }"
+    />
     <img src="assets/edit.png" title="Edit the note" />
   </div>
   <div class="content">

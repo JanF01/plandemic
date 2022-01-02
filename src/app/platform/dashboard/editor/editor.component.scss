@@ -109,6 +109,10 @@ main {
     }
   }
 }
+
+img.off {
+  opacity: 0.4;
+}
 ::ng-deep .mat-checkbox-frame {
   border-color: white !important;
 }

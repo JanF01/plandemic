@@ -1,8 +1,10 @@
 <button
   [ngClass]="{
-    second: content == 'Check Out The Possibilities',
+    second: content == 'Check Out The Possibilities' || content == 'CANCEL',
     blue: content == 'Sign up',
-    red: content == 'Sign in'
+    red: content == 'Sign in',
+    cr: content == 'CREATE',
+    ca: content == 'CANCEL'
   }"
   (click)="notifyParent()"
 >

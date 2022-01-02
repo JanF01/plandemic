@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { VerificationService } from 'src/app/verification.service';
 
 @Component({
@@ -7,7 +7,8 @@ import { VerificationService } from 'src/app/verification.service';
   styleUrls: ['./bottom-nav.component.scss'],
 })
 export class BottomNavComponent implements OnInit {
-  menuOpen: boolean = false;
+  @Input() menuOpen: boolean = false;
+  @Output() menuSwitch: EventEmitter<any> = new EventEmitter();
   constructor(private verify: VerificationService) {}
 
   ngOnInit(): void {}
@@ -21,6 +22,8 @@ export class BottomNavComponent implements OnInit {
       menu.style.display = 'none';
       this.menuOpen = false;
     }
+
+    this.menuSwitch.emit('n');
   }
 
   logout() {
