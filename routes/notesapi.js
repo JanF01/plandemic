@@ -12,6 +12,23 @@ notesapi.use(cors());
 
 var fs = require("fs");
 var Q = require("q");
+const { resolveSoa } = require("dns");
+
+var months = [
+  "Jenuary",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+var weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 function readFirstLine(path) {
   return Q.promise(function (resolve, reject) {
@@ -75,6 +92,7 @@ notesapi.get(
     let client = req.params.id;
     let token = req.params.token;
     let folderId = req.params.folderId;
+    if (folderId == "null") folderId = null;
 
     let decoded = jwt.verify(token, process.env.SECRET_KEY);
 
@@ -90,5 +108,71 @@ notesapi.get(
     }
   }
 );
+
+notesapi.post("/create_note", (req, res) => {
+  let token = req.body.token;
+  var noteData = {
+    title: req.body.note.title,
+    unformattedContent: req.body.note.unformattedContent,
+    pinned: req.body.note.pinned,
+    date: req.body.note.date,
+    note_color: req.body.note.noteColor,
+    folderId: null,
+    clientPdId: req.body.id,
+  };
+
+  let current_date = new Date();
+
+  let day = current_date.getDate();
+  let month = months[current_date.getMonth()];
+  let year = current_date.getFullYear();
+  let dayOfWeek = weekday[current_date.getDay()];
+
+  noteData.date = dayOfWeek + ", " + month + " " + day + ", " + year;
+
+  let decoded = jwt.verify(token, process.env.SECRET_KEY);
+
+  if (decoded) {
+    Note.create(noteData)
+      .then((note) => {
+        if (note) {
+          res.json({
+            note: note,
+          });
+        } else {
+          res.json("Error");
+        }
+      })
+      .catch((err) => {
+        res.json("error: " + err);
+      });
+  }
+});
+
+notesapi.post("/pin_note", async function (req, res) {
+  let token = req.body.token;
+  var noteData = {
+    id: req.body.note.id,
+    pinned: req.body.note.pinned,
+  };
+
+  let decoded = jwt.verify(token, process.env.SECRET_KEY);
+
+  if (decoded) {
+    Note.findOne({
+      where: {
+        id: noteData.id,
+      },
+    })
+      .then(async function (note) {
+        note.pinned = !note.pinned;
+        await note.save();
+        res.json({ note: note });
+      })
+      .catch((error) => {
+        res.json("Error: " + error);
+      });
+  }
+});
 
 module.exports = notesapi;
