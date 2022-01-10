@@ -95,13 +95,14 @@ main {
     background: transparent;
     box-shadow: none;
     right: 16vw;
-    img {
-      filter: brightness(100%);
-    }
+
     .file {
       display: flex;
       align-items: center;
       transition: all 0.15s;
+      img {
+        filter: brightness(100%);
+      }
       &:hover {
         transform: scale(0.93);
         cursor: pointer;
@@ -110,6 +111,30 @@ main {
   }
 }
 
+@media only screen and (max-width: 1600px) {
+  main {
+    font-size: 0.8em;
+    .menu {
+      img {
+        width: 29px;
+        margin-left: 0.6em;
+        transition: all 0.15s;
+        filter: brightness(10%);
+        &:hover {
+          cursor: pointer;
+          transform: scale(0.94);
+        }
+      }
+      img:nth-child(2) {
+        margin-left: 0.2em;
+      }
+      img:nth-child(5) {
+        width: 25px;
+        height: 25px;
+      }
+    }
+  }
+}
 img.off {
   opacity: 0.4;
 }

@@ -16,7 +16,6 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { PlatformComponent } from './platform/platform.component';
 import { DashboardComponent } from './platform/dashboard/dashboard.component';
-import { NotesComponent } from './platform/notes/notes.component';
 import { BottomNavComponent } from './platform/dashboard/bottom-nav/bottom-nav.component';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { StorageComponent } from './platform/dashboard/storage/storage.component';
@@ -31,10 +30,7 @@ const appRoutes: Routes = [
   {
     path: 'platform',
     component: PlatformComponent,
-    children: [
-      { path: 'dashboard', component: DashboardComponent },
-      { path: 'notes', component: NotesComponent },
-    ],
+    children: [{ path: 'dashboard', component: DashboardComponent }],
   },
   { path: '404', redirectTo: '' },
   { path: '**', redirectTo: '' },
@@ -50,7 +46,6 @@ const appRoutes: Routes = [
     SignupComponent,
     DashboardComponent,
     PlatformComponent,
-    NotesComponent,
     BottomNavComponent,
     StorageComponent,
     EditorComponent,

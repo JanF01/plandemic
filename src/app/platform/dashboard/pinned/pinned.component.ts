@@ -34,7 +34,7 @@ export class PinnedComponent implements OnInit {
     this.clientSub = this.client.currentClient.subscribe({
       next: (change) => {
         if (change && change.id != undefined) {
-          this.notes.getPinnedNotes(change.id).subscribe((data) => {});
+          this.notes.getPinnedNotes(change.id).subscribe();
         }
       },
     });

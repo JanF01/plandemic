@@ -37,7 +37,7 @@ main {
       margin-left: -20%;
 
       @include borderRadius(0.6em);
-      box-shadow: 0em 0.2em 1em -0.2em rgb(196, 99, 20);
+      box-shadow: 0em 0.2em 1em -0.2em rgb(51, 50, 50);
     }
   }
   .design {
@@ -91,4 +91,20 @@ main {
 
 .hide {
   display: none;
+}
+
+@media only screen and(max-width:1600px) {
+  main {
+    font-size: 0.8em;
+    aside {
+      img:first-child {
+        position: absolute;
+        top: 138px;
+        left: 224px;
+        width: 200px;
+        z-index: 10;
+        float: left;
+      }
+    }
+  }
 }

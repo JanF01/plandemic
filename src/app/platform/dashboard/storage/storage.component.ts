@@ -94,5 +94,10 @@ export class StorageComponent implements OnInit {
       event.previousIndex,
       event.currentIndex
     );
+    this.notesWithNoFolder.forEach((e, i) => {
+      e.organize_order = i;
+    });
+
+    this.notes.reOrderNotes(this.notesWithNoFolder).subscribe();
   }
 }

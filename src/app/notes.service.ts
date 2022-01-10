@@ -21,16 +21,20 @@ export class NotesService {
     return String(window.localStorage.getItem('pdc_js_tk'));
   }
 
-  private generateNotes(unformatedNotes: Array<any>): Array<Note> {
+  private generateNotes(
+    unformatedNotes: Array<any>,
+    order: boolean = false
+  ): Array<Note> {
     let arrayOfNotes: Array<Note> = [];
     unformatedNotes.forEach((e: any, i: any) => {
-      arrayOfNotes[i] = new Note(
+      arrayOfNotes[order ? e.organize_order : i] = new Note(
         e.id,
         e.title,
         e.unformattedContent,
         e.pinned,
         [],
         e.date,
+        e.organize_order,
         e.note_color,
         e.folderId
       );
@@ -130,9 +134,9 @@ export class NotesService {
       map((notes: any) => {
         if (notes) {
           if (folderId == null) {
-            this.notesWithNoFolder.next(this.generateNotes(notes));
+            this.notesWithNoFolder.next(this.generateNotes(notes, true));
           } else {
-            return this.generateNotes(notes);
+            return this.generateNotes(notes, true);
           }
         }
         return false;
@@ -176,6 +180,24 @@ export class NotesService {
       map((notes: any) => {
         if (notes) {
           this.pinnedNotes.next(this.generateNotes(notes));
+        }
+      })
+    );
+
+    return request;
+  }
+
+  public reOrderNotes(notes: Array<Note>): Observable<any> {
+    const token = this.getToken();
+    const base = this.http.post(this.baseUrl + '/change_order', {
+      notes: notes,
+      token: token,
+    });
+
+    const request = base.pipe(
+      map((data: any) => {
+        if (data != 'success') {
+          console.log('there was an error:' + data);
         }
       })
     );

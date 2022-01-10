@@ -102,3 +102,59 @@
     }
   }
 }
+
+@media only screen and(max-width:1600px) {
+  .hide {
+    font-size: 0.8em;
+    img.open_m {
+      width: 28px !important;
+    }
+    nav {
+      ul {
+        &.main {
+          margin-left: 1em;
+          li {
+            img {
+              width: 41px;
+            }
+            &:nth-child(2) {
+              img {
+                width: 35px;
+                margin-left: 0.23em;
+              }
+            }
+            &:nth-child(3) {
+              img {
+                width: 40px;
+              }
+            }
+          }
+        }
+
+        li {
+          color: white;
+          font-weight: 900;
+
+          justify-content: left;
+          transition: all 0.15s;
+          &:hover {
+            cursor: pointer;
+            transform: scale(0.97);
+          }
+
+          img {
+            width: 40px;
+            filter: hue-rotate(20deg);
+          }
+
+          &.logout {
+            img {
+              margin-left: 0.3em;
+              width: 35px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

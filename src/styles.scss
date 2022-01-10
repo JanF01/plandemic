@@ -5,10 +5,16 @@
 body {
   margin: 0 auto;
   background: $dark;
-
+  font-size: 1em;
   font-family: "Raleway", "Courier New", Courier, monospace;
 }
 
 #menu {
   display: none;
+}
+
+@media only screen and (max-width: 1600px) {
+  body {
+    font-size: small;
+  }
 }

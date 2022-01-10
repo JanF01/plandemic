@@ -14,3 +14,10 @@ main {
     margin-left: 5.5em;
   }
 }
+@media only screen and(max-width:1600px) {
+  main {
+    app-editor {
+      margin-left: 4.7em;
+    }
+  }
+}

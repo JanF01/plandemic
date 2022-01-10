@@ -6,7 +6,7 @@ main {
   max-height: 100vh;
   position: absolute;
   top: 0;
-  left: 8.3vh;
+  left: 5em;
   background-color: $orange;
   //border-right: $dorange solid 0.2em;
 
@@ -132,4 +132,11 @@ main {
     display: none;
   }
   color: transparent;
+}
+
+@media only screen and (max-width: 1600px) {
+  main {
+    font-size: 0.8em;
+    left: 5.5em;
+  }
 }

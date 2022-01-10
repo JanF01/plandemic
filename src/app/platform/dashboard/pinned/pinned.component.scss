@@ -43,7 +43,7 @@ main {
       list-style-type: none;
       margin-top: 2em;
       li {
-        width: 91%;
+        width: 90%;
         margin-left: 10%;
         margin-top: 1em;
         display: flex;
@@ -79,5 +79,11 @@ main {
         }
       }
     }
+  }
+}
+
+@media only screen and (max-width: 1600px) {
+  main {
+    font-size: 0.8em;
   }
 }

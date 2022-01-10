@@ -36,7 +36,7 @@ export class CenterEditComponent implements OnInit {
   createNote() {
     this.notes
       .createNote(
-        new Note(0, this.title, '', false, [], '', '', 112),
+        new Note(0, this.title, '', false, [], '', 0, '', 112),
         this.clientId
       )
       .subscribe((res) => {
