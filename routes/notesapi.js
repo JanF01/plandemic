@@ -57,16 +57,19 @@ notesapi.get("/get_pinned/:id/:token", async function (req, res) {
   let token = req.params.token;
 
   let decoded = jwt.verify(token, process.env.SECRET_KEY);
-  if (decoded) {
-    const pinnedNotes = await Note.findAll({
-      where: {
-        clientPdId: client,
-        pinned: true,
-      },
-    });
 
-    res.json(pinnedNotes);
+  if (!decoded) {
+    req.json("No access");
+    return 0;
   }
+  const pinnedNotes = await Note.findAll({
+    where: {
+      clientPdId: client,
+      pinned: true,
+    },
+  });
+
+  res.json(pinnedNotes);
 });
 
 notesapi.get("/get_folders/:id/:token", async function (req, res) {
@@ -75,15 +78,18 @@ notesapi.get("/get_folders/:id/:token", async function (req, res) {
 
   let decoded = jwt.verify(token, process.env.SECRET_KEY);
 
-  if (decoded) {
-    const folders = await Folder.findAll({
-      where: {
-        clientPdId: client,
-      },
-    });
-
-    res.json(folders);
+  if (!decoded) {
+    req.json("No access");
+    return 0;
   }
+
+  const folders = await Folder.findAll({
+    where: {
+      clientPdId: client,
+    },
+  });
+
+  res.json(folders);
 });
 
 notesapi.get(
@@ -96,26 +102,30 @@ notesapi.get(
 
     let decoded = jwt.verify(token, process.env.SECRET_KEY);
 
-    if (decoded) {
-      const notes = await Note.findAll({
-        where: {
-          clientPdId: client,
-          folderId: folderId,
-        },
-      });
-
-      res.json(notes);
+    if (!decoded) {
+      req.json("No access");
+      return 0;
     }
+
+    const notes = await Note.findAll({
+      where: {
+        clientPdId: client,
+        folderId: folderId,
+      },
+    });
+
+    res.json(notes);
   }
 );
 
-notesapi.post("/create_note", (req, res) => {
+notesapi.post("/create_note", async function (req, res) {
   let token = req.body.token;
   var noteData = {
     title: req.body.note.title,
     unformattedContent: req.body.note.unformattedContent,
     pinned: req.body.note.pinned,
     date: req.body.note.date,
+    organize_order: 0,
     note_color: req.body.note.noteColor,
     folderId: null,
     clientPdId: req.body.id,
@@ -132,21 +142,33 @@ notesapi.post("/create_note", (req, res) => {
 
   let decoded = jwt.verify(token, process.env.SECRET_KEY);
 
-  if (decoded) {
-    Note.create(noteData)
-      .then((note) => {
-        if (note) {
-          res.json({
-            note: note,
-          });
-        } else {
-          res.json("Error");
-        }
-      })
-      .catch((err) => {
-        res.json("error: " + err);
-      });
+  if (!decoded) {
+    req.json("No access");
+    return 0;
   }
+  const notes = await Note.findAll({
+    where: {
+      folderId: null,
+    },
+  });
+
+  let amountOfNotes = notes.length;
+
+  noteData.organize_order = amountOfNotes;
+
+  Note.create(noteData)
+    .then((note) => {
+      if (note) {
+        res.json({
+          note: note,
+        });
+      } else {
+        res.json("Error");
+      }
+    })
+    .catch((err) => {
+      res.json("error: " + err);
+    });
 });
 
 notesapi.post("/pin_note", async function (req, res) {
@@ -158,21 +180,83 @@ notesapi.post("/pin_note", async function (req, res) {
 
   let decoded = jwt.verify(token, process.env.SECRET_KEY);
 
-  if (decoded) {
+  if (!decoded) {
+    req.json("No access");
+    return 0;
+  }
+
+  Note.findOne({
+    where: {
+      id: noteData.id,
+    },
+  })
+    .then(async function (note) {
+      note.pinned = !note.pinned;
+      await note.save();
+      res.json({ note: note });
+    })
+    .catch((error) => {
+      res.json("Error: " + error);
+    });
+});
+
+notesapi.post("/change_order", (req, res) => {
+  let token = req.body.token;
+  let notes = req.body.notes;
+  let decoded = jwt.verify(token, process.env.SECRET_KEY);
+
+  if (!decoded) {
+    res.json("No access");
+    return 0;
+  }
+
+  notes.forEach((e) => {
     Note.findOne({
       where: {
-        id: noteData.id,
+        id: e.id,
       },
     })
-      .then(async function (note) {
-        note.pinned = !note.pinned;
-        await note.save();
-        res.json({ note: note });
+      .then((note) => {
+        note.organize_order = e.organize_order;
+        note.save();
       })
-      .catch((error) => {
-        res.json("Error: " + error);
+      .catch((err) => {
+        res.json("error: " + err);
+        return 0;
       });
+  });
+  res.json("success");
+});
+
+notesapi.post("/change_folder", (req, res) => {
+  let token = req.body.token;
+  let decoded = JWT.verify(token, process.env.SECRET_KEY);
+  var noteData = {
+    id: req.body.note.id,
+  };
+  var folderId = res.body.foler.id;
+
+  if (!decoded) {
+    res.json("No access");
+    return 0;
   }
+
+  Note.findOne({
+    where: {
+      id: noteData.id,
+    },
+  })
+    .then((note) => {
+      if (note) {
+        note.folderId = folderId;
+        note.save();
+        res.json("success");
+      }
+    })
+    .catch((err) => {
+      res.json("error: " + err);
+      return 0;
+    });
 });
 
 module.exports = notesapi;

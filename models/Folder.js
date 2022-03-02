@@ -14,6 +14,9 @@ const Folder = db.sequelize.define(
     title: {
       type: Sequelize.STRING(100),
     },
+    organize_order: {
+      type: Sequelize.INTEGER,
+    },
     date: {
       type: Sequelize.TEXT("tiny"),
     },

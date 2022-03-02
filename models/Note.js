@@ -24,6 +24,9 @@ const Note = db.sequelize.define(
     date: {
       type: Sequelize.TEXT("tiny"),
     },
+    organize_order: {
+      type: Sequelize.INTEGER,
+    },
     note_color: {
       type: Sequelize.TEXT("tiny"),
     },
