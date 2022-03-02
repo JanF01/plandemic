@@ -11,10 +11,10 @@
     <li (click)="openCreateNote()">
       <img src="assets/add-note.png" />New note
     </li>
+    <li class="n"><img src="assets/create-folder.png" />Create folder</li>
   </ul>
   <p>STORAGE</p>
   <ul class="folders">
-    <li class="n"><img src="assets/create-folder.png" />Create folder</li>
     <li *ngFor="let folder of folders; index as i" (click)="switchFolder(i)">
       <img class="arr" src="assets/up-arrow.png" [hidden]="!folder.open" /><img
         class="arr"

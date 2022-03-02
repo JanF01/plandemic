@@ -98,6 +98,27 @@ export class NotesService {
     return request;
   }
 
+  public moveNoteToFolder(note: Note, folder: Folder) {
+    const token = this.getToken();
+    const base = this.http.post(this.baseUrl + '/change_folder', {
+      note: note,
+      folder: folder,
+      token: token,
+    });
+
+    const request = base.pipe(
+      map((data: any) => {
+        if (data == 'success') {
+          console.log('That was nice');
+        } else {
+          console.log('Hell nagh');
+        }
+      })
+    );
+
+    return request;
+  }
+
   public createNote(note: Note, id: number) {
     const token = this.getToken();
     const base = this.http.post(this.baseUrl + '/create_note', {
@@ -156,9 +177,10 @@ export class NotesService {
         if (folders) {
           let arrayOfFolders: Array<Folder> = [];
           folders.forEach((element: any, i: any) => {
-            arrayOfFolders[i] = new Folder(
+            arrayOfFolders[element.organize_order] = new Folder(
               element.id,
               element.title,
+              element.organize_order,
               element.date
             );
           });
